@@ -1,0 +1,4834 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đấu Trường Tiếng Anh 8 — Ôn Tập 100% Đề Cương (164 Câu)</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
+    body {
+      background: radial-gradient(circle at 15% 20%, #1e1b4b 0%, #0f172a 55%, #020617 100%);
+      color: #f8fafc;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+    }
+    .glass-pill {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+    }
+    .btn-glow:hover {
+      box-shadow: 0 0 22px rgba(99, 102, 241, 0.55);
+      transform: translateY(-1px);
+    }
+    .word-chip {
+      transition: all 0.16s cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none;
+    }
+    .word-chip:hover:not(:disabled) {
+      transform: translateY(-2px) scale(1.02);
+    }
+    .word-chip:active:not(:disabled) {
+      transform: translateY(0) scale(0.97);
+    }
+    @keyframes pulseSlow {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+    .animate-pulse-slow {
+      animation: pulseSlow 2.4s infinite ease-in-out;
+    }
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.92) translateY(8px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .pop-in {
+      animation: popIn 0.24s ease-out forwards;
+    }
+    @keyframes eqBar1 { 0%, 100% { height: 4px; } 50% { height: 15px; } }
+    @keyframes eqBar2 { 0%, 100% { height: 14px; } 35% { height: 5px; } 70% { height: 16px; } }
+    @keyframes eqBar3 { 0%, 100% { height: 7px; } 45% { height: 16px; } }
+    .eq-active .bar1 { animation: eqBar1 0.6s infinite ease-in-out; }
+    .eq-active .bar2 { animation: eqBar2 0.55s infinite ease-in-out; }
+    .eq-active .bar3 { animation: eqBar3 0.65s infinite ease-in-out; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- CONFETTI & PARTICLE CANVAS OVERLAY -->
+  <canvas id="fxCanvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 glass-card border-b border-slate-700/70 px-3 sm:px-6 py-2.5">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <!-- Brand + Class Badge -->
+      <div class="flex items-center gap-2.5">
+        <button id="btnLogoHome" type="button" class="flex items-center gap-2.5 text-left group focus:outline-none">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition">
+            <span class="text-xl">🚀</span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-base sm:text-lg tracking-tight bg-gradient-to-r from-white via-indigo-200 to-amber-200 bg-clip-text text-transparent">English 8 Arena</span>
+              <span id="headerClassBadge" class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40">Lớp 8A1</span>
+            </div>
+            <p class="text-[11px] text-slate-400 hidden sm:block">Ôn tập 100% đề cương: Unit 1 • Unit 2 • Unit 3 (164/164 câu)</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="flex items-center gap-1.5 bg-slate-900/80 p-1 rounded-xl border border-slate-700/80">
+        <button id="navLobby" type="button" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition bg-indigo-600 text-white shadow">
+          🏠 Sảnh Chính
+        </button>
+        <button id="navPlay" type="button" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition text-slate-300 hover:text-white hover:bg-slate-800">
+          🎮 Đấu Trường
+        </button>
+        <button id="navBank" type="button" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition text-slate-300 hover:text-white hover:bg-slate-800">
+          📚 Kho 164 Câu
+        </button>
+        <button id="navLeaderboard" type="button" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition text-slate-300 hover:text-white hover:bg-slate-800">
+          🏆 Bảng Vàng Lớp
+        </button>
+      </nav>
+
+      <!-- Music & Audio Controls -->
+      <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1.5 glass-pill px-2.5 py-1.5 rounded-xl">
+          <button id="btnToggleBgm" type="button" class="flex items-center gap-1.5 text-xs font-bold text-emerald-300 hover:text-emerald-200 transition" title="Bật/Tắt nhạc nền">
+            <span id="bgmIcon">🎵</span>
+            <span id="bgmStatusText" class="hidden md:inline">Nhạc: BẬT</span>
+            <span id="bgmEqualizer" class="inline-flex items-end gap-0.5 h-4 ml-0.5">
+              <span class="bar1 w-1 bg-emerald-400 rounded-full h-1.5"></span>
+              <span class="bar2 w-1 bg-emerald-400 rounded-full h-2.5"></span>
+              <span class="bar3 w-1 bg-emerald-400 rounded-full h-1"></span>
+            </span>
+          </button>
+          <span class="text-slate-600">|</span>
+          <select id="selectBgmStyle" aria-label="Chọn giai điệu nhạc nền" class="bg-transparent text-xs font-semibold text-indigo-200 focus:outline-none cursor-pointer">
+            <option value="upbeat" class="bg-slate-900 text-white">Giai điệu: Sôi động</option>
+            <option value="lofi" class="bg-slate-900 text-white">Giai điệu: Lofi Chill</option>
+            <option value="heroic" class="bg-slate-900 text-white">Giai điệu: Đấu trường</option>
+          </select>
+        </div>
+
+        <button id="btnToggleSfx" type="button" class="glass-pill px-2.5 py-1.5 rounded-xl text-xs font-bold text-indigo-300 hover:text-white transition" title="Bật/Tắt hiệu ứng âm thanh">
+          <span id="sfxIcon">🔊</span> <span id="sfxText" class="hidden sm:inline">SFX</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-5">
+
+    <!-- ==================== VIEW 1: LOBBY / HOME ==================== -->
+    <section id="viewLobby" class="space-y-6 pop-in">
+      <!-- Top Hero Banner with Class & Student Info -->
+      <div class="glass-card rounded-3xl p-5 sm:p-7 border border-indigo-500/30 shadow-2xl relative overflow-hidden">
+        <div class="absolute -right-12 -top-12 w-60 h-60 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-12 -bottom-12 w-60 h-60 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
+          <!-- Left: Welcome & Class Input -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-bold">
+              <span>✨ ĐỀ CƯƠNG TIẾNG ANH 8 — TRỌN BỘ 100% NỘI DUNG (164 CÂU)</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight text-white">
+              Chào mừng tập thể lớp <span id="heroClassName" class="text-amber-400 underline decoration-wavy decoration-amber-500/60">8A1</span>!
+            </h1>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Chinh phục trọn vẹn <strong class="text-white">164 câu hỏi</strong> từ tài liệu ôn tập gồm <span class="text-indigo-300 font-semibold">Chuyên đề 2 (65 câu Trắc nghiệm)</span>, <span class="text-emerald-300 font-semibold">Chuyên đề 3 (60 câu Word Forms)</span> và <span class="text-amber-300 font-semibold">Chuyên đề 5 (39 câu Writing)</span> qua 3 यूनिट: <em>Leisure Activities, Life in the Countryside, Teenagers</em>.
+            </p>
+
+            <!-- Class Name & Student Name Form -->
+            <div class="bg-slate-900/85 border border-slate-700/80 rounded-2xl p-4 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-300">🏷️ Thông tin Lớp & Học sinh</span>
+                <span id="saveProfileFeedback" class="text-xs text-emerald-400 font-semibold opacity-0 transition">✓ Đã cập nhật!</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label for="inputStudentName" class="block text-xs text-slate-400 mb-1 font-medium">Họ và tên học sinh / Nhóm:</label>
+                  <input id="inputStudentName" type="text" placeholder="VD: Nguyễn Minh Anh" value="Chiến Binh Tiếng Anh"
+                    class="w-full px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-600 text-white text-sm font-semibold focus:outline-none focus:border-indigo-400" />
+                </div>
+                <div>
+                  <label for="inputClassName" class="block text-xs text-slate-400 mb-1 font-medium">Tên Lớp (hiển thị trên toàn game):</label>
+                  <input id="inputClassName" type="text" placeholder="VD: 8A1 - THCS Chu Văn An" value="Lớp 8A1"
+                    class="w-full px-3.5 py-2 rounded-xl bg-slate-800 border border-amber-500/60 text-amber-300 text-sm font-bold focus:outline-none focus:border-amber-400" />
+                </div>
+              </div>
+              <!-- Quick Class Presets -->
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="text-[11px] text-slate-400 mr-1">Chọn nhanh lớp:</span>
+                <button type="button" data-class-preset="Lớp 8A1" class="preset-class-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-indigo-600 text-slate-200 transition">8A1</button>
+                <button type="button" data-class-preset="Lớp 8A2" class="preset-class-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-indigo-600 text-slate-200 transition">8A2</button>
+                <button type="button" data-class-preset="Lớp 8A3" class="preset-class-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-indigo-600 text-slate-200 transition">8A3</button>
+                <button type="button" data-class-preset="Lớp 8A4" class="preset-class-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-indigo-600 text-slate-200 transition">8A4</button>
+                <button type="button" data-class-preset="Lớp 8A5" class="preset-class-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-indigo-600 text-slate-200 transition">8A5</button>
+                <button type="button" data-class-preset="Khối 8" class="preset-class-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-indigo-600 text-slate-200 transition">Khối 8</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Mastery Progress Dashboard -->
+          <div class="lg:col-span-5 bg-slate-900/90 border border-slate-700/80 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="text-base font-extrabold text-white">📊 Tiến Độ Chinh Phục Đề Cương</h2>
+                <p class="text-xs text-slate-400">Hoàn thành từng câu để đạt 100% đề cương</p>
+              </div>
+              <div class="text-right">
+                <span id="statTotalMastered" class="text-2xl font-black text-emerald-400">0/164</span>
+                <p id="statTotalPercent" class="text-[11px] font-bold text-slate-400">0% hoàn thành</p>
+              </div>
+            </div>
+
+            <!-- Overall Progress Bar -->
+            <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden p-0.5 border border-slate-700">
+              <div id="barTotalMastery" class="h-full bg-gradient-to-r from-indigo-500 via-emerald-400 to-amber-400 rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+
+            <!-- Breakdown by Chuyên Đề -->
+            <div class="space-y-2.5 pt-1">
+              <div class="bg-slate-800/75 rounded-xl p-2.5 border border-slate-700/60">
+                <div class="flex justify-between text-xs font-bold mb-1">
+                  <span class="text-indigo-300">🎯 Chuyên đề 2: Vocabulary & Grammar</span>
+                  <span id="statCD2">0 / 65 câu</span>
+                </div>
+                <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden">
+                  <div id="barCD2" class="h-full bg-indigo-500 transition-all duration-500" style="width: 0%"></div>
+                </div>
+              </div>
+
+              <div class="bg-slate-800/75 rounded-xl p-2.5 border border-slate-700/60">
+                <div class="flex justify-between text-xs font-bold mb-1">
+                  <span class="text-emerald-300">🧩 Chuyên đề 3: Word Forms (Từ loại)</span>
+                  <span id="statCD3">0 / 60 câu</span>
+                </div>
+                <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden">
+                  <div id="barCD3" class="h-full bg-emerald-500 transition-all duration-500" style="width: 0%"></div>
+                </div>
+              </div>
+
+              <div class="bg-slate-800/75 rounded-xl p-2.5 border border-slate-700/60">
+                <div class="flex justify-between text-xs font-bold mb-1">
+                  <span class="text-amber-300">✍️ Chuyên đề 5: Writing (Sắp xếp & Viết lại)</span>
+                  <span id="statCD5">0 / 39 câu</span>
+                </div>
+                <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden">
+                  <div id="barCD5" class="h-full bg-amber-500 transition-all duration-500" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-1 text-xs text-slate-400">
+              <span>🏅 Điểm tích lũy: <strong id="statTotalScore" class="text-amber-300">0 XP</strong></span>
+              <span>🔥 Chuỗi kỷ lục: <strong id="statBestStreak" class="text-rose-400">0</strong></span>
+              <button id="btnResetProgress" type="button" class="text-rose-400 hover:text-rose-300 underline font-medium">Xoá tiến độ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MISSION LAUNCHPAD: FILTER & GAME MODE SELECTION -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left 7 cols: Choose Chuyên Đề & Unit -->
+        <div class="lg:col-span-7 glass-card rounded-3xl p-5 sm:p-6 space-y-5">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h2 class="text-lg sm:text-xl font-extrabold text-white flex items-center gap-2">
+              <span>🗺️ Bước 1: Chọn Nội Dung Ôn Tập</span>
+            </h2>
+            <span id="selectedCountBadge" class="px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-200 text-xs font-bold">
+              Đang chọn: 164 câu
+            </span>
+          </div>
+
+          <!-- Topic Filter Buttons -->
+          <div class="space-y-2">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Chọn Chuyên Đề:</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <button type="button" data-topic="ALL" class="topic-filter-btn p-3 rounded-2xl border text-left transition flex items-center justify-between bg-indigo-600/30 border-indigo-400 text-white">
+                <div>
+                  <div class="font-bold text-sm">🌟 Tất cả Chuyên đề (100%)</div>
+                  <div class="text-xs text-slate-300">Toàn bộ 164 câu trong đề cương</div>
+                </div>
+                <span class="px-2 py-0.5 rounded-lg bg-indigo-500 text-white text-xs font-extrabold">164</span>
+              </button>
+
+              <button type="button" data-topic="CD2" class="topic-filter-btn p-3 rounded-2xl border text-left transition flex items-center justify-between bg-slate-800/70 border-slate-700 text-slate-200 hover:border-slate-500">
+                <div>
+                  <div class="font-bold text-sm">🎯 Chuyên đề 2: Vocab & Grammar</div>
+                  <div class="text-xs text-slate-400">Trắc nghiệm A, B, C, D</div>
+                </div>
+                <span class="px-2 py-0.5 rounded-lg bg-slate-700 text-indigo-300 text-xs font-extrabold">65</span>
+              </button>
+
+              <button type="button" data-topic="CD3" class="topic-filter-btn p-3 rounded-2xl border text-left transition flex items-center justify-between bg-slate-800/70 border-slate-700 text-slate-200 hover:border-slate-500">
+                <div>
+                  <div class="font-bold text-sm">🧩 Chuyên đề 3: Word Forms</div>
+                  <div class="text-xs text-slate-400">Chia dạng đúng của từ trong ngoặc</div>
+                </div>
+                <span class="px-2 py-0.5 rounded-lg bg-slate-700 text-emerald-300 text-xs font-extrabold">60</span>
+              </button>
+
+              <button type="button" data-topic="CD5" class="topic-filter-btn p-3 rounded-2xl border text-left transition flex items-center justify-between bg-slate-800/70 border-slate-700 text-slate-200 hover:border-slate-500">
+                <div>
+                  <div class="font-bold text-sm">✍️ Chuyên đề 5: Writing</div>
+                  <div class="text-xs text-slate-400">Sắp xếp từ & Viết lại câu đồng nghĩa</div>
+                </div>
+                <span class="px-2 py-0.5 rounded-lg bg-slate-700 text-amber-300 text-xs font-extrabold">39</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Unit Filter Buttons -->
+          <div class="space-y-2">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Chọn Unit (Đơn vị bài học):</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              <button type="button" data-unit="ALL" class="unit-filter-btn py-2.5 px-3 rounded-xl border text-xs sm:text-sm font-bold transition bg-amber-500/25 border-amber-400 text-amber-200">
+                📚 Cả 3 Unit
+              </button>
+              <button type="button" data-unit="Unit 1" class="unit-filter-btn py-2.5 px-3 rounded-xl border text-xs sm:text-sm font-bold transition bg-slate-800/80 border-slate-700 text-slate-300 hover:border-slate-500">
+                🎧 Unit 1: Leisure
+              </button>
+              <button type="button" data-unit="Unit 2" class="unit-filter-btn py-2.5 px-3 rounded-xl border text-xs sm:text-sm font-bold transition bg-slate-800/80 border-slate-700 text-slate-300 hover:border-slate-500">
+                🌾 Unit 2: Countryside
+              </button>
+              <button type="button" data-unit="Unit 3" class="unit-filter-btn py-2.5 px-3 rounded-xl border text-xs sm:text-sm font-bold transition bg-slate-800/80 border-slate-700 text-slate-300 hover:border-slate-500">
+                🎒 Unit 3: Teenagers
+              </button>
+            </div>
+          </div>
+
+          <!-- Question Order & Assistance Settings -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div class="bg-slate-900/70 p-3 rounded-2xl border border-slate-700/70">
+              <label for="selectOrderMode" class="block text-xs font-bold text-slate-400 mb-1">Thứ tự câu hỏi:</label>
+              <select id="selectOrderMode" class="w-full bg-slate-800 border border-slate-600 rounded-xl px-3 py-1.5 text-xs sm:text-sm font-semibold text-white focus:outline-none">
+                <option value="sequential">Theo đúng thứ tự đề cương (Từ câu 1 -> hết)</option>
+                <option value="unmastered">Ưu tiên câu chưa làm đúng</option>
+                <option value="random">Trộn ngẫu nhiên câu hỏi</option>
+              </select>
+            </div>
+            <div class="bg-slate-900/70 p-3 rounded-2xl border border-slate-700/70">
+              <label for="selectInputStyle" class="block text-xs font-bold text-slate-400 mb-1">Chế độ trả lời Word Form & Viết câu:</label>
+              <select id="selectInputStyle" class="w-full bg-slate-800 border border-slate-600 rounded-xl px-3 py-1.5 text-xs sm:text-sm font-semibold text-white focus:outline-none">
+                <option value="interactive">Tương tác thông minh (Gõ phím + Gợi ý / Ghép từ)</option>
+                <option value="strict">Thử thách tự luận (Tự gõ 100% đáp án)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 cols: Choose Game Mode & Launch -->
+        <div class="lg:col-span-5 glass-card rounded-3xl p-5 sm:p-6 flex flex-col justify-between space-y-5">
+          <div class="space-y-4">
+            <h2 class="text-lg sm:text-xl font-extrabold text-white">⚡ Bước 2: Chọn Chế Độ Chơi</h2>
+
+            <div class="space-y-2.5">
+              <button type="button" data-gamemode="adventure" class="gamemode-btn w-full p-3.5 rounded-2xl border text-left transition flex items-start gap-3 bg-gradient-to-r from-indigo-600/30 to-purple-600/25 border-indigo-400 text-white">
+                <span class="text-2xl mt-0.5">🛡️</span>
+                <div class="flex-1">
+                  <div class="font-extrabold text-sm flex items-center justify-between">
+                    <span>Chinh Phục Đề Cương (Chuẩn 100%)</span>
+                    <span class="text-[11px] px-2 py-0.5 rounded bg-indigo-500 text-white">Khuyên dùng</span>
+                  </div>
+                  <p class="text-xs text-slate-300 mt-0.5">Không giới hạn thời gian. Giải từng câu kèm giải thích ngữ pháp chi tiết và lưu tiến độ.</p>
+                </div>
+              </button>
+
+              <button type="button" data-gamemode="speedrun" class="gamemode-btn w-full p-3.5 rounded-2xl border text-left transition flex items-start gap-3 bg-slate-800/75 border-slate-700 text-slate-200 hover:border-slate-500">
+                <span class="text-2xl mt-0.5">⏱️</span>
+                <div class="flex-1">
+                  <div class="font-extrabold text-sm flex items-center justify-between">
+                    <span>Đấu Trường Tốc Độ (Speed Blitz)</span>
+                    <span class="text-[11px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">Nhân đôi XP</span>
+                  </div>
+                  <p class="text-xs text-slate-400 mt-0.5">30 giây cho mỗi câu hỏi! Trả lời càng nhanh, điểm thưởng Combo càng khủng.</p>
+                </div>
+              </button>
+
+              <button type="button" data-gamemode="survival" class="gamemode-btn w-full p-3.5 rounded-2xl border text-left transition flex items-start gap-3 bg-slate-800/75 border-slate-700 text-slate-200 hover:border-slate-500">
+                <span class="text-2xl mt-0.5">👑</span>
+                <div class="flex-1">
+                  <div class="font-extrabold text-sm flex items-center justify-between">
+                    <span>Thử Thách Sinh Tồn (3 Tim ❤️)</span>
+                    <span class="text-[11px] px-2 py-0.5 rounded bg-rose-500/20 text-rose-300">Kịch tính</span>
+                  </div>
+                  <p class="text-xs text-slate-400 mt-0.5">Bạn có 3 mạng (❤️❤️❤️) và 3 quyền trợ giúp. Xem ai trụ vững lâu nhất trong lớp!</p>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Launch CTA -->
+          <div class="space-y-2.5 pt-2">
+            <button id="btnStartGame" type="button" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-400 hover:to-pink-400 text-white font-black text-base sm:text-lg shadow-xl shadow-indigo-500/30 btn-glow transition flex items-center justify-center gap-2">
+              <span>🚀 BẮT ĐẦU ÔN TẬP NGAY</span>
+            </button>
+            <p class="text-[11px] text-center text-slate-400">
+              Nhạc nền sôi động sẽ tự động phát khi bấm bắt đầu (có thể bật/tắt ở góc trên).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Unit Cards Overview -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="glass-card rounded-2xl p-4 border border-slate-700/70 flex items-center justify-between">
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-indigo-400">UNIT 1 • 55 CÂU</span>
+            <h3 class="font-extrabold text-white text-base">Leisure Activities</h3>
+            <p class="text-xs text-slate-400">20 Trắc nghiệm • 20 Word Forms • 15 Writing</p>
+          </div>
+          <button type="button" data-quick-unit="Unit 1" class="quick-unit-play px-3.5 py-2 rounded-xl bg-indigo-600/30 hover:bg-indigo-600 text-indigo-200 hover:text-white text-xs font-bold border border-indigo-500/40 transition">
+            Chơi Unit 1 →
+          </button>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 border border-slate-700/70 flex items-center justify-between">
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-emerald-400">UNIT 2 • 57 CÂU</span>
+            <h3 class="font-extrabold text-white text-base">Life in the Countryside</h3>
+            <p class="text-xs text-slate-400">25 Trắc nghiệm • 20 Word Forms • 12 Writing</p>
+          </div>
+          <button type="button" data-quick-unit="Unit 2" class="quick-unit-play px-3.5 py-2 rounded-xl bg-emerald-600/30 hover:bg-emerald-600 text-emerald-200 hover:text-white text-xs font-bold border border-emerald-500/40 transition">
+            Chơi Unit 2 →
+          </button>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 border border-slate-700/70 flex items-center justify-between">
+          <div class="space-y-1">
+            <span class="text-xs font-bold text-amber-400">UNIT 3 • 52 CÂU</span>
+            <h3 class="font-extrabold text-white text-base">Teenagers</h3>
+            <p class="text-xs text-slate-400">20 Trắc nghiệm • 20 Word Forms • 12 Writing</p>
+          </div>
+          <button type="button" data-quick-unit="Unit 3" class="quick-unit-play px-3.5 py-2 rounded-xl bg-amber-600/30 hover:bg-amber-600 text-amber-200 hover:text-white text-xs font-bold border border-amber-500/40 transition">
+            Chơi Unit 3 →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 2: ARENA / GAMEPLAY ==================== -->
+    <section id="viewPlay" class="hidden space-y-4 pop-in">
+      <!-- Top Arena Status Bar -->
+      <div class="glass-card rounded-2xl p-3 sm:p-4 flex flex-wrap items-center justify-between gap-3 border border-indigo-500/30">
+        <!-- Player & Class Info -->
+        <div class="flex items-center gap-2.5">
+          <button id="btnBackToLobby" type="button" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-600 transition">
+            ← Đổi bộ đề
+          </button>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span id="arenaPlayerName" class="font-bold text-sm text-white">Chiến Binh</span>
+              <span id="arenaClassBadge" class="px-2 py-0.5 rounded-md bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-extrabold">Lớp 8A1</span>
+            </div>
+            <p id="arenaDeckSubtitle" class="text-[11px] text-slate-400">Chuyên đề 2, 3, 5 • Tất cả Unit</p>
+          </div>
+        </div>
+
+        <!-- Score, Streak, Lives, Timer -->
+        <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+          <div id="arenaLivesBox" class="hidden items-center gap-1 px-3 py-1 rounded-xl bg-rose-950/60 border border-rose-500/40 text-xs font-bold text-rose-300">
+            <span>Mạng:</span>
+            <span id="arenaLivesDisplay">❤️❤️❤️</span>
+          </div>
+
+          <div id="arenaTimerBox" class="hidden items-center gap-1.5 px-3 py-1 rounded-xl bg-amber-950/60 border border-amber-500/40 text-xs font-extrabold text-amber-300">
+            <span>⏱️</span>
+            <span id="arenaTimerDisplay">30s</span>
+          </div>
+
+          <div class="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-orange-950/60 border border-orange-500/40 text-xs font-extrabold text-orange-300">
+            <span>🔥 Combo:</span>
+            <span id="arenaStreakDisplay">0</span>
+          </div>
+
+          <div class="flex items-center gap-1.5 px-3.5 py-1 rounded-xl bg-indigo-950/80 border border-indigo-400/40 text-xs sm:text-sm font-black text-indigo-200">
+            <span>⭐ Điểm:</span>
+            <span id="arenaScoreDisplay">0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Bar & Question Navigator -->
+      <div class="glass-card rounded-2xl p-3 sm:p-4 space-y-2.5">
+        <div class="flex items-center justify-between text-xs font-bold">
+          <span id="arenaQuestionCounter" class="text-indigo-300">Câu 1 / 164</span>
+          <div class="flex items-center gap-2">
+            <span id="arenaAccuracyBadge" class="text-emerald-400">Đúng: 0</span>
+            <button id="btnToggleJumpGrid" type="button" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 transition">
+              🔢 Chọn nhanh câu (1-164)
+            </button>
+          </div>
+        </div>
+        <div class="w-full h-2.5 bg-slate-900 rounded-full overflow-hidden">
+          <div id="arenaProgressBar" class="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 transition-all duration-300" style="width: 1%"></div>
+        </div>
+
+        <!-- Collapsible Question Jump Grid -->
+        <div id="jumpGridContainer" class="hidden pt-2 border-t border-slate-700/80">
+          <p class="text-[11px] text-slate-400 mb-2">Nhấn vào số thứ tự câu để chuyển trực tiếp đến câu đó (Xanh: Đã làm đúng • Đỏ: Cần ôn lại • Tím: Câu hiện tại):</p>
+          <div id="jumpGridButtons" class="grid grid-cols-8 sm:grid-cols-12 md:grid-cols-16 gap-1.5 max-h-44 overflow-y-auto p-1"></div>
+        </div>
+      </div>
+
+      <!-- MAIN QUESTION CARD -->
+      <div class="glass-card rounded-3xl p-5 sm:p-8 border border-slate-700/90 shadow-2xl space-y-6 relative">
+        <!-- Category & Lifeline Row -->
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span id="qTopicBadge" class="px-3 py-1 rounded-full text-xs font-extrabold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
+              CHUYÊN ĐỀ 2: VOCAB & GRAMMAR
+            </span>
+            <span id="qUnitBadge" class="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+              UNIT 1: LEISURE ACTIVITIES
+            </span>
+            <span id="qOriginalNumBadge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700">
+              Câu #1 trong đề
+            </span>
+          </div>
+
+          <!-- Lifelines / Power-ups -->
+          <div class="flex items-center gap-1.5">
+            <button id="btnLifelineHint" type="button" class="px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 text-amber-300 text-xs font-bold transition flex items-center gap-1" title="Xem gợi ý ngữ pháp hoặc loại đáp án sai">
+              <span>💡 Trợ giúp</span>
+              <span id="lifelineCount" class="px-1.5 py-0.2 rounded bg-amber-500/30 text-white">5</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Instruction & Prompt -->
+        <div class="space-y-3">
+          <p id="qInstructionText" class="text-xs sm:text-sm font-semibold text-slate-400 uppercase tracking-wide">
+            Choose the best answer to complete the following sentence:
+          </p>
+          <div class="p-4 sm:p-6 rounded-2xl bg-slate-900/90 border border-slate-700/90 shadow-inner">
+            <h3 id="qPromptText" class="text-lg sm:text-2xl font-bold text-white leading-relaxed whitespace-pre-line">
+              Mai enjoys ______ to music, especially pop music in her free time.
+            </h3>
+            <div id="qWordFormHintBox" class="hidden mt-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-200 text-sm font-bold">
+              <span>🔑 Từ gốc trong ngoặc:</span>
+              <span id="qWordFormRoot" class="text-base font-black text-white underline">(relax)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- INTERACTION ZONE 1: MULTIPLE CHOICE (Used for CD2, and optional helper for CD3/CD5 Rewrite) -->
+        <div id="zoneMcq" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+
+        <!-- INTERACTION ZONE 2: WORD FORM / REWRITE TEXT INPUT -->
+        <div id="zoneTextInput" class="hidden space-y-3">
+          <div class="flex flex-col sm:flex-row gap-2.5">
+            <input id="inputAnswerText" type="text" autocomplete="off" spellcheck="false"
+              placeholder="Nhập đáp án của bạn vào đây..."
+              class="flex-1 px-4 py-3.5 rounded-2xl bg-slate-900 border-2 border-indigo-500/50 focus:border-indigo-400 text-white text-base sm:text-lg font-bold focus:outline-none" />
+            <button id="btnSubmitTextAnswer" type="button" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-extrabold text-sm sm:text-base shadow-lg transition">
+              Kiểm Tra Đáp Án ✓
+            </button>
+          </div>
+          <!-- Quick mode switch for Word Form / Rewrite -->
+          <div id="quickChoiceSwitchBox" class="flex items-center justify-between flex-wrap gap-2 pt-1">
+            <span class="text-xs text-slate-400">💡 Bạn có thể tự gõ đáp án hoặc bật 4 phương án gợi ý nhanh:</span>
+            <button id="btnShowQuickOptions" type="button" class="text-xs font-bold text-indigo-300 hover:text-indigo-200 underline">
+              Hiện 4 phương án lựa chọn nhanh
+            </button>
+          </div>
+        </div>
+
+        <!-- INTERACTION ZONE 3: SENTENCE REORDERING (Used for CD5 Part I) -->
+        <div id="zoneReorder" class="hidden space-y-4">
+          <!-- Selected words drop area -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-xs text-slate-400 font-semibold">
+              <span>✍️ Câu của bạn (Nhấn vào các thẻ từ bên dưới để ghép câu, hoặc nhấn vào từ đã chọn để bỏ ra):</span>
+              <button id="btnClearReorder" type="button" class="text-rose-400 hover:text-rose-300 font-bold">↺ Xoá xếp lại</button>
+            </div>
+            <div id="reorderTargetBox" class="min-h-[68px] p-3.5 rounded-2xl bg-slate-900/95 border-2 border-dashed border-indigo-500/50 flex flex-wrap items-center gap-2"></div>
+          </div>
+
+          <!-- Source word bank -->
+          <div class="space-y-1.5">
+            <span class="text-xs text-slate-400 font-semibold">🧩 Kho từ cho sẵn:</span>
+            <div id="reorderSourceBox" class="p-3.5 rounded-2xl bg-slate-800/70 border border-slate-700 flex flex-wrap items-center gap-2"></div>
+          </div>
+
+          <!-- Optional manual typing input for Reorder -->
+          <div class="flex flex-col sm:flex-row gap-2.5 pt-1">
+            <button id="btnSubmitReorder" type="button" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-black text-sm sm:text-base shadow-lg transition">
+              Kiểm Tra Câu Đã Ghép ✓
+            </button>
+          </div>
+        </div>
+
+        <!-- FEEDBACK & EXPLANATION BOX -->
+        <div id="feedbackBox" class="hidden rounded-2xl p-4 sm:p-5 border space-y-2 pop-in">
+          <div class="flex items-start justify-between gap-3">
+            <div class="space-y-1">
+              <div id="feedbackTitle" class="text-base sm:text-lg font-black">🎉 Chính xác! +100 XP</div>
+              <div id="feedbackCorrectAnswer" class="text-sm font-bold text-white"></div>
+              <p id="feedbackExplanation" class="text-xs sm:text-sm text-slate-200 leading-relaxed pt-1"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM NAVIGATION CONTROLS -->
+        <div class="flex items-center justify-between pt-3 border-t border-slate-700/80">
+          <button id="btnPrevQuestion" type="button" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs sm:text-sm font-bold border border-slate-600 transition disabled:opacity-40">
+            ← Câu trước
+          </button>
+
+          <div class="flex items-center gap-2">
+            <button id="btnSkipQuestion" type="button" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs sm:text-sm font-semibold border border-slate-700 transition">
+              Bỏ qua ⏭
+            </button>
+            <button id="btnNextQuestion" type="button" class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-black shadow-lg shadow-indigo-600/30 transition">
+              Câu tiếp theo →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 3: SUMMARY / VICTORY MODAL VIEW ==================== -->
+    <section id="viewSummary" class="hidden space-y-6 pop-in">
+      <div class="glass-card rounded-3xl p-6 sm:p-10 text-center max-w-3xl mx-auto border border-amber-400/40 shadow-2xl space-y-6">
+        <div class="w-20 h-20 mx-auto rounded-3xl bg-gradient-to-br from-amber-400 via-orange-500 to-pink-500 flex items-center justify-center text-4xl shadow-xl shadow-amber-500/30">
+          🏆
+        </div>
+        <div class="space-y-2">
+          <div id="summaryClassBadge" class="inline-block px-4 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-black uppercase tracking-wider">
+            LỚP 8A1 • BẢNG THÀNH TÍCH
+          </div>
+          <h2 id="summaryTitle" class="text-2xl sm:text-4xl font-black text-white">Hoàn Thành Xuất Sắc!</h2>
+          <p id="summarySubtitle" class="text-slate-300 text-sm sm:text-base">Chúc mừng chiến binh đã hoàn thành lượt đấu ôn tập!</p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-700">
+            <div class="text-xs text-slate-400 font-semibold">Điểm đạt được</div>
+            <div id="sumScore" class="text-2xl font-black text-amber-400 mt-1">0 XP</div>
+          </div>
+          <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-700">
+            <div class="text-xs text-slate-400 font-semibold">Số câu đúng</div>
+            <div id="sumCorrect" class="text-2xl font-black text-emerald-400 mt-1">0/0</div>
+          </div>
+          <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-700">
+            <div class="text-xs text-slate-400 font-semibold">Chuỗi Combo Max</div>
+            <div id="sumMaxStreak" class="text-2xl font-black text-orange-400 mt-1">0</div>
+          </div>
+          <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-700">
+            <div class="text-xs text-slate-400 font-semibold">Độ chính xác</div>
+            <div id="sumAccuracy" class="text-2xl font-black text-indigo-300 mt-1">100%</div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <button id="btnReplaySame" type="button" class="px-6 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-sm sm:text-base shadow-lg transition">
+            🔄 Chơi lại bộ đề này
+          </button>
+          <button id="btnReviewWrong" type="button" class="hidden px-6 py-3.5 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-extrabold text-sm sm:text-base shadow-lg transition">
+            🎯 Ôn lại các câu làm sai
+          </button>
+          <button id="btnSummaryToLobby" type="button" class="px-6 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm sm:text-base border border-slate-600 transition">
+            🏠 Về Sảnh Chính
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 4: FULL 164-QUESTION BANK & FLASHCARDS ==================== -->
+    <section id="viewBank" class="hidden space-y-5 pop-in">
+      <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-black text-white">📚 Kho Đề Cương 100% (Đầy Đủ 164 Câu & Đáp Án)</h2>
+            <p class="text-xs sm:text-sm text-slate-400">Tra cứu nhanh, xem giải thích chi tiết hoặc bấm "Luyện câu này" để nhảy vào đấu trường.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="btnToggleAllAnswersBank" type="button" class="px-3.5 py-2 rounded-xl bg-indigo-600/30 border border-indigo-400/50 text-indigo-200 text-xs font-bold hover:bg-indigo-600 hover:text-white transition">
+              👁️ Hiện/Ẩn toàn bộ đáp án
+            </button>
+          </div>
+        </div>
+
+        <!-- Search & Filter Bar -->
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+          <div class="sm:col-span-5">
+            <input id="bankSearchInput" type="text" placeholder="🔍 Tìm kiếm từ khoá (VD: fancy, countryside,壓, Avatar, Unit 2...)"
+              class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-400" />
+          </div>
+          <div class="sm:col-span-3">
+            <select id="bankFilterTopic" aria-label="Lọc theo chuyên đề" class="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none">
+              <option value="ALL">Tất cả Chuyên đề (164 câu)</option>
+              <option value="CD2">Chuyên đề 2: Vocab & Grammar (65)</option>
+              <option value="CD3">Chuyên đề 3: Word Forms (60)</option>
+              <option value="CD5">Chuyên đề 5: Writing (39)</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <select id="bankFilterUnit" aria-label="Lọc theo Unit" class="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none">
+              <option value="ALL">Tất cả Unit</option>
+              <option value="Unit 1">Unit 1: Leisure</option>
+              <option value="Unit 2">Unit 2: Countryside</option>
+              <option value="Unit 3">Unit 3: Teenagers</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <select id="bankFilterStatus" aria-label="Lọc theo trạng thái" class="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none">
+              <option value="ALL">Mọi trạng thái</option>
+              <option value="MASTERED">✓ Đã thuộc</option>
+              <option value="UNMASTERED">○ Chưa làm / Sai</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="bankCountText" class="text-xs font-bold text-indigo-300">Đang hiển thị: 164 / 164 câu hỏi</div>
+
+        <!-- List of Questions -->
+        <div id="bankListContainer" class="space-y-3 max-h-[68vh] overflow-y-auto pr-1"></div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 5: CLASS LEADERBOARD / HALL OF FAME ==================== -->
+    <section id="viewLeaderboard" class="hidden space-y-5 pop-in">
+      <div class="glass-card rounded-3xl p-5 sm:p-7 space-y-5 border border-amber-500/30">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div class="inline-flex items-center gap-1.5 text-xs font-extrabold text-amber-400 uppercase tracking-wider">
+              <span>🏆 BẢNG VÀNG THI ĐUA THEO LỚP</span>
+            </div>
+            <h2 class="text-xl sm:text-3xl font-black text-white mt-0.5">
+              Vinh Danh Chiến Binh — <span id="leaderboardClassTitle" class="text-amber-400">Lớp 8A1</span>
+            </h2>
+          </div>
+          <button id="btnClearLeaderboard" type="button" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-rose-950 text-slate-400 hover:text-rose-300 text-xs font-semibold border border-slate-700 transition">
+            Xoá lịch sử bảng vàng
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-700 text-xs font-bold text-slate-400 uppercase">
+                <th class="py-3 px-3">Hạng</th>
+                <th class="py-3 px-3">Học sinh / Nhóm</th>
+                <th class="py-3 px-3">Lớp</th>
+                <th class="py-3 px-3">Chế độ & Bộ đề</th>
+                <th class="py-3 px-3">Kết quả</th>
+                <th class="py-3 px-3">Điểm XP</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardTableBody" class="divide-y divide-slate-800 text-sm"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-auto py-4 px-4 text-center text-xs text-slate-500 border-t border-slate-800/80">
+    Đấu Trường Tiếng Anh 8 • Ôn tập 100% nội dung đề cương (Chuyên đề 2, Chuyên đề 3, Chuyên đề 5 — 164 câu hỏi) • Hỗ trợ Nhạc nền Web Audio Synthesizer
+  </footer>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastBox" class="fixed bottom-5 right-5 z-50 hidden px-4 py-3 rounded-2xl glass-card border border-indigo-400/50 text-white text-xs sm:text-sm font-bold shadow-2xl"></div>
+
+  <script>
+    // ============================================================================
+    // 1. COMPLETE 100% QUESTION DATABASE (164 QUESTIONS FROM THE UPLOADED PDF)
+    // ============================================================================
+    const QUESTIONS = [
+  {
+    "id": "cd2_u1_1",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 1,
+    "prompt": "Mai enjoys ______ to music, especially pop music in her free time.",
+    "options": [
+      "hearing",
+      "playing",
+      "listening",
+      "talking"
+    ],
+    "answer": 2,
+    "exp": "Cấu trúc: enjoy + V-ing. Cụm từ 'listen to music' (nghe nhạc) -> listening."
+  },
+  {
+    "id": "cd2_u1_2",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 2,
+    "prompt": "My grandparents love ______ very much. There are a lot of beautiful flowers and fresh vegetables in their garden.",
+    "options": [
+      "doing garden",
+      "doing gardening",
+      "do gardening",
+      "to do garden"
+    ],
+    "answer": 1,
+    "exp": "Sau 'love' + V-ing/to V. Cụm danh từ đúng là 'doing gardening' (làm vườn)."
+  },
+  {
+    "id": "cd2_u1_3",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 3,
+    "prompt": "You should avoid ______ too much TV. It's not good for your eyes.",
+    "options": [
+      "seeing",
+      "looking",
+      "watching",
+      "glancing"
+    ],
+    "answer": 2,
+    "exp": "Sau 'avoid' + V-ing. Xem TV dùng động từ 'watch' -> watching."
+  },
+  {
+    "id": "cd2_u1_4",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 4,
+    "prompt": "Nga likes ______ with her close friend on Saturday evenings.",
+    "options": [
+      "window shop",
+      "window to shop",
+      "window shops",
+      "window shopping"
+    ],
+    "answer": 3,
+    "exp": "Sau 'like' + V-ing. 'window shopping' là đi ngắm đồ qua khung kính cửa hàng."
+  },
+  {
+    "id": "cd2_u1_5",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 5,
+    "prompt": "Lan used to love ______ in front of the computer for hours but now she doesn't. She takes part in a judo club.",
+    "options": [
+      "using",
+      "sitting",
+      "doing",
+      "having"
+    ],
+    "answer": 1,
+    "exp": "'sitting in front of the computer' (ngồi trước máy tính)."
+  },
+  {
+    "id": "cd2_u1_6",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 6,
+    "prompt": "Minh is very hard-working boy. He doesn't mind ______ a lot of homework in the evenings.",
+    "options": [
+      "making",
+      "reading",
+      "seeing",
+      "doing"
+    ],
+    "answer": 3,
+    "exp": "Cấu trúc: mind + V-ing. Cụm từ 'do homework' (làm bài tập về nhà) -> doing."
+  },
+  {
+    "id": "cd2_u1_7",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 7,
+    "prompt": "Do you fancy ______ around the West Lake with me this Sunday morning?",
+    "options": [
+      "going",
+      "having",
+      "staying",
+      "moving"
+    ],
+    "answer": 0,
+    "exp": "Sau 'fancy' + V-ing (thích làm gì). 'go around the West Lake' -> going."
+  },
+  {
+    "id": "cd2_u1_8",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 8,
+    "prompt": "Why don't we ______ our parents with some DIY project? I think it is useful.",
+    "options": [
+      "help",
+      "do",
+      "make",
+      "give"
+    ],
+    "answer": 0,
+    "exp": "Cấu trúc: Why don't we + V(nguyên thể); help sb with sth (giúp ai việc gì)."
+  },
+  {
+    "id": "cd2_u1_9",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 9,
+    "prompt": "How much time do you spend ______ leisure activities?",
+    "options": [
+      "on",
+      "in",
+      "for",
+      "with"
+    ],
+    "answer": 0,
+    "exp": "Cấu trúc: spend time on sth (dành thời gian cho việc gì)."
+  },
+  {
+    "id": "cd2_u1_10",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 10,
+    "prompt": "Daisy is ______ social media. She spends lots of time on Facebook and Instagram.",
+    "options": [
+      "tired of",
+      "bored with",
+      "addicted to",
+      "curious about"
+    ],
+    "answer": 2,
+    "exp": "'be addicted to sth': nghiện cái gì (dành rất nhiều thời gian trên Facebook và Instagram)."
+  },
+  {
+    "id": "cd2_u1_11",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 11,
+    "prompt": "On YouTube you can find many videos on ______ all aspects of your English.",
+    "options": [
+      "surfing",
+      "working",
+      "taking",
+      "improving"
+    ],
+    "answer": 3,
+    "exp": "'improving all aspects of your English' (cải thiện mọi khía cạnh tiếng Anh của bạn)."
+  },
+  {
+    "id": "cd2_u1_12",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 12,
+    "prompt": "My sister enjoys ______. She usually walks around the mall, but not buying anything.",
+    "options": [
+      "going shopping",
+      "hanging out",
+      "window shopping",
+      "doing DIY"
+    ],
+    "answer": 2,
+    "exp": "Đi dạo quanh trung tâm thương mại nhưng không mua gì gọi là 'window shopping'."
+  },
+  {
+    "id": "cd2_u1_13",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 13,
+    "prompt": "“My favourite leisure activity is people watching.” - “______”",
+    "options": [
+      "That sounds so weird!",
+      "That's all right.",
+      "OK. That's what you've chosen.",
+      "Sure. It's very entertaining."
+    ],
+    "answer": 0,
+    "exp": "Phản hồi tự nhiên khi nghe một sở thích lạ ('ngắm nhìn mọi người'): 'That sounds so weird!' (Nghe lạ lùng thế!)."
+  },
+  {
+    "id": "cd2_u1_14",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 14,
+    "prompt": "Nick reads the language websites every day because he is trying ______ Vietnamese.",
+    "options": [
+      "learning",
+      "to learn",
+      "learn",
+      "learns"
+    ],
+    "answer": 1,
+    "exp": "Cấu trúc: try + to V (cố gắng làm gì) -> to learn."
+  },
+  {
+    "id": "cd2_u1_15",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 15,
+    "prompt": "Even though it is weekend, he prefers ______ books at home to ______ out with friends.",
+    "options": [
+      "read / hang",
+      "reads / hangs",
+      "reading / hanging",
+      "to read / to hang"
+    ],
+    "answer": 2,
+    "exp": "Cấu trúc: prefer + V-ing + to + V-ing (thích làm gì hơn làm gì)."
+  },
+  {
+    "id": "cd2_u1_16",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 16,
+    "prompt": "Hung founded a movie club. People join this club because they are ______ watching movies.",
+    "options": [
+      "in",
+      "on",
+      "at",
+      "into"
+    ],
+    "answer": 3,
+    "exp": "Cấu trúc: be into + V-ing / N (rất thích, say mê cái gì)."
+  },
+  {
+    "id": "cd2_u1_17",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 17,
+    "prompt": "A: She really ______ collecting coins.\nB: It's more than that. She is obsessed!",
+    "options": [
+      "adores",
+      "dislikes",
+      "hates",
+      "detests"
+    ],
+    "answer": 0,
+    "exp": "'adores' (yêu thích, mê) phù hợp với ngữ cảnh 'Hơn thế nữa, cô ấy bị ám ảnh/nghiện luôn!'."
+  },
+  {
+    "id": "cd2_u1_18",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 18,
+    "prompt": "I can't live without coffee. I'm so ______ to it.",
+    "options": [
+      "addict",
+      "addictive",
+      "addicted",
+      "addiction"
+    ],
+    "answer": 2,
+    "exp": "Cấu trúc: be addicted to sth (nghiện cái gì)."
+  },
+  {
+    "id": "cd2_u1_19",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 19,
+    "prompt": "Liz wants to use her free time for helpful activities so she works as ______.",
+    "options": [
+      "a volunteer",
+      "a fan",
+      "a teammate",
+      "a partner"
+    ],
+    "answer": 0,
+    "exp": "Làm các hoạt động có ích trong thời gian rảnh -> làm tình nguyện viên (a volunteer)."
+  },
+  {
+    "id": "cd2_u1_20",
+    "topic": "CD2",
+    "unit": "Unit 1",
+    "type": "mcq",
+    "num": 20,
+    "prompt": "She is always ______ on something nice and cute even though they are useless.",
+    "options": [
+      "addicted",
+      "interested",
+      "hooked",
+      "fallen"
+    ],
+    "answer": 2,
+    "exp": "Cấu trúc: be hooked on sth (mê mẩn, thích thú cái gì)."
+  },
+  {
+    "id": "cd2_u2_1",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 1,
+    "prompt": "He did the test ______ I did.",
+    "options": [
+      "as bad as",
+      "badder than",
+      "more badly than",
+      "worse than"
+    ],
+    "answer": 3,
+    "exp": "So sánh hơn của trạng từ 'badly' là 'worse' -> worse than."
+  },
+  {
+    "id": "cd2_u2_2",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 2,
+    "prompt": "My sister dances ______ than me.",
+    "options": [
+      "gooder",
+      "weller",
+      "better",
+      "more good"
+    ],
+    "answer": 2,
+    "exp": "So sánh hơn của trạng từ 'well' là 'better' -> better than."
+  },
+  {
+    "id": "cd2_u2_3",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 3,
+    "prompt": "He drives ______ his brother.",
+    "options": [
+      "more careful than",
+      "more carefully",
+      "more carefully than",
+      "as careful as"
+    ],
+    "answer": 2,
+    "exp": "Bổ nghĩa cho động từ 'drives' cần trạng từ 'carefully', so sánh hơn có 'than' -> more carefully than."
+  },
+  {
+    "id": "cd2_u2_4",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 4,
+    "prompt": "Don't worry. It is ______ to travel to that village even at night.",
+    "options": [
+      "safe",
+      "unsafe",
+      "difficult",
+      "inconvenient"
+    ],
+    "answer": 0,
+    "exp": "'Don't worry' (Đừng lo) -> Đi đến ngôi làng đó kể cả ban đêm vẫn an toàn (safe)."
+  },
+  {
+    "id": "cd2_u2_5",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 5,
+    "prompt": "The boys often help their parents to ______ water from the village well.",
+    "options": [
+      "gather",
+      "collect",
+      "give",
+      "find"
+    ],
+    "answer": 1,
+    "exp": "Cụm từ: collect water from the well (lấy nước từ giếng làng)."
+  },
+  {
+    "id": "cd2_u2_6",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 6,
+    "prompt": "In the Central Highlands, the biggest and tallest house in the village is the ______ house.",
+    "options": [
+      "communication",
+      "community",
+      "communal",
+      "commune"
+    ],
+    "answer": 2,
+    "exp": "'communal house': nhà Rông / nhà sinh hoạt cộng đồng."
+  },
+  {
+    "id": "cd2_u2_7",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 7,
+    "prompt": "The Viet people have many ______ customs and crafts.",
+    "options": [
+      "tradition",
+      "traditional",
+      "culture",
+      "customary"
+    ],
+    "answer": 1,
+    "exp": "Trước cụm danh từ 'customs and crafts' cần tính từ 'traditional' (truyền thống)."
+  },
+  {
+    "id": "cd2_u2_8",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 8,
+    "prompt": "The ______ on display in Da Nang Museum of Cham Sculpture are very interesting.",
+    "options": [
+      "items",
+      "goods",
+      "products",
+      "shows"
+    ],
+    "answer": 0,
+    "exp": "'items on display' (các hiện vật được trưng bày trong bảo tàng)."
+  },
+  {
+    "id": "cd2_u2_9",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 9,
+    "prompt": "I went on a trip to the countryside and had my first experience ______ farm work.",
+    "options": [
+      "on",
+      "with",
+      "for",
+      "of"
+    ],
+    "answer": 3,
+    "exp": "Cụm từ: experience of sth (trải nghiệm về việc gì)."
+  },
+  {
+    "id": "cd2_u2_10",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 10,
+    "prompt": "I think country life is so boring and ______ because you're not close to shops and services.",
+    "options": [
+      "unhealthy",
+      "inconvenient",
+      "comfortable",
+      "peaceful"
+    ],
+    "answer": 1,
+    "exp": "Không gần cửa hàng và dịch vụ -> bất tiện (inconvenient)."
+  },
+  {
+    "id": "cd2_u2_11",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 11,
+    "prompt": "On the farm, uncle Duong showed us how to ______ cucumbers.",
+    "options": [
+      "plough",
+      "produce",
+      "pick",
+      "put up"
+    ],
+    "answer": 2,
+    "exp": "'pick cucumbers': hái dưa chuột."
+  },
+  {
+    "id": "cd2_u2_12",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 12,
+    "prompt": "Mongolian children start to learn ______ before they can walk.",
+    "options": [
+      "horse riding",
+      "riding horse",
+      "ride horse",
+      "horse ridden"
+    ],
+    "answer": 0,
+    "exp": "Danh từ ghép chỉ môn cưỡi ngựa: 'horse riding'."
+  },
+  {
+    "id": "cd2_u2_13",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 13,
+    "prompt": "On the side of the road, a herd boy was herding ______.",
+    "options": [
+      "kites",
+      "hay",
+      "cattle",
+      "blackberries"
+    ],
+    "answer": 2,
+    "exp": "'herd cattle': chăn gia súc (trâu, bò)."
+  },
+  {
+    "id": "cd2_u2_14",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 14,
+    "prompt": "Does your new stereo play music ______ than your old one did?",
+    "options": [
+      "louder",
+      "more loudly",
+      "loudlier",
+      "more louder"
+    ],
+    "answer": 1,
+    "exp": "So sánh hơn của trạng từ 'loudly' (hoặc louder trong văn nói, nhưng ngữ pháp chuẩn SGK là 'more loudly')."
+  },
+  {
+    "id": "cd2_u2_15",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 15,
+    "prompt": "“Children in my village often fly their kites in dry rice fields.” - “______”",
+    "options": [
+      "It's right up my street!",
+      "That's awesome.",
+      "Exactly what I want.",
+      "How interesting!"
+    ],
+    "answer": 3,
+    "exp": "Đáp lại thông tin thú vị về cuộc sống nông thôn: 'How interesting!' (Thật thú vị!)."
+  },
+  {
+    "id": "cd2_u2_16",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 16,
+    "prompt": "People in rural areas live ______ than those in cities.",
+    "options": [
+      "simplier",
+      "more simply",
+      "more simple",
+      "simpler"
+    ],
+    "answer": 1,
+    "exp": "Bổ nghĩa cho động từ 'live' dùng trạng từ 'simply' -> so sánh hơn: 'more simply'."
+  },
+  {
+    "id": "cd2_u2_17",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 17,
+    "prompt": "______ is the Nung's clothing? – Indigo.",
+    "options": [
+      "What",
+      "Which group",
+      "What colour",
+      "Whose"
+    ],
+    "answer": 2,
+    "exp": "Câu trả lời là 'Indigo' (màu chàm) -> Hỏi màu sắc: 'What colour'."
+  },
+  {
+    "id": "cd2_u2_18",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 18,
+    "prompt": "“I find it hard to build a toy car.” - “But ______”",
+    "options": [
+      "my pleasure",
+      "it's my fault.",
+      "it sounds great!",
+      "it's right up your street!"
+    ],
+    "answer": 3,
+    "exp": "Thành ngữ 'it's right up your street!' nghĩa là 'Đó đúng là sở trường của cậu mà!'."
+  },
+  {
+    "id": "cd2_u2_19",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 19,
+    "prompt": "I have stayed in a ______ area for two weeks. The transportation was very inconvenient and there was no entertainment center to relax.",
+    "options": [
+      "rural",
+      "urban",
+      "outskirts",
+      "suburb"
+    ],
+    "answer": 0,
+    "exp": "'rural area' (vùng nông thôn) nơi giao thông bất tiện và không có trung tâm giải trí."
+  },
+  {
+    "id": "cd2_u2_20",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 20,
+    "prompt": "Nam helped his parents ______ the rice onto the ox-drawn cart.",
+    "options": [
+      "load",
+      "collect",
+      "dry",
+      "ride"
+    ],
+    "answer": 0,
+    "exp": "'load the rice onto the ox-drawn cart': chất lúa lên xe bò kéo."
+  },
+  {
+    "id": "cd2_u2_21",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 21,
+    "prompt": "In Emi's opinion, people in the countryside are more ______ than in the city.",
+    "options": [
+      "hospitable",
+      "picturesque",
+      "natural",
+      "peaceful"
+    ],
+    "answer": 0,
+    "exp": "Nói về con người (people) -> 'hospitable' (hiếu khách)."
+  },
+  {
+    "id": "cd2_u2_22",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 22,
+    "prompt": "She walks ______ than other people.",
+    "options": [
+      "slower",
+      "more slowly",
+      "more slowier",
+      "Slow"
+    ],
+    "answer": 1,
+    "exp": "Bổ nghĩa cho động từ 'walks' dùng trạng từ 'slowly' -> so sánh hơn: 'more slowly'."
+  },
+  {
+    "id": "cd2_u2_23",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 23,
+    "prompt": "He often ______ holes in his garden to plant trees.",
+    "options": [
+      "ploughs",
+      "picks",
+      "digs",
+      "collects"
+    ],
+    "answer": 2,
+    "exp": "'dig holes': đào hố (để trồng cây)."
+  },
+  {
+    "id": "cd2_u2_24",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 24,
+    "prompt": "My uncle hired extra workers to help at harvest ______.",
+    "options": [
+      "time",
+      "point",
+      "period",
+      "season"
+    ],
+    "answer": 0,
+    "exp": "Cụm từ cố định: 'harvest time' (mùa gặt / thời điểm thu hoạch)."
+  },
+  {
+    "id": "cd2_u2_25",
+    "topic": "CD2",
+    "unit": "Unit 2",
+    "type": "mcq",
+    "num": 25,
+    "prompt": "My cousin rode the bike ______ through the narrow soil paths.",
+    "options": [
+      "healthily",
+      "skillfully",
+      "exactly",
+      "hardly"
+    ],
+    "answer": 1,
+    "exp": "'rode the bike skillfully' (đi xe đạp một cách điêu luyện/khéo léo qua những con đường đất hẹp)."
+  },
+  {
+    "id": "cd2_u3_1",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 1,
+    "prompt": "It's not a problem for the contestants to work under ______.",
+    "options": [
+      "relax",
+      "resting",
+      "pressure",
+      "pastime"
+    ],
+    "answer": 2,
+    "exp": "Cụm từ: 'work under pressure' (làm việc dưới áp lực)."
+  },
+  {
+    "id": "cd2_u3_2",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 2,
+    "prompt": "Mike felt stressed, ______ he watched a comedy on YouTube.",
+    "options": [
+      "although",
+      "so",
+      "but",
+      "or"
+    ],
+    "answer": 1,
+    "exp": "Mike cảm thấy căng thẳng, vì vậy (so) cậu ấy đã xem một bộ phim hài trên YouTube."
+  },
+  {
+    "id": "cd2_u3_3",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 3,
+    "prompt": "I started playing chess two months ago, and I can ______ better now than before.",
+    "options": [
+      "played",
+      "concentrate",
+      "win",
+      "lose"
+    ],
+    "answer": 1,
+    "exp": "Sau 'can' + V(nguyên thể): 'concentrate better' (tập trung tốt hơn trước)."
+  },
+  {
+    "id": "cd2_u3_4",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 4,
+    "prompt": "To meet her parents' ______, she spends five hours practising the piano every day.",
+    "options": [
+      "meeting",
+      "hopeless",
+      "expectations",
+      "wishes"
+    ],
+    "answer": 2,
+    "exp": "Cụm từ: 'meet someone's expectations' (đáp ứng kỳ vọng của ai)."
+  },
+  {
+    "id": "cd2_u3_5",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 5,
+    "prompt": "Tom has a busy and active life. He does well at school and ______ in many clubs like basketball and chess club.",
+    "options": [
+      "participate",
+      "takes",
+      "joined",
+      "goes"
+    ],
+    "answer": 0,
+    "exp": "Cụm từ 'participate in' (tham gia vào). (Lưu ý trong đề gốc in 'participate')."
+  },
+  {
+    "id": "cd2_u3_6",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 6,
+    "prompt": "Tom worked ______ than Mi; therefore, he got better results in the exams.",
+    "options": [
+      "hardly",
+      "harder",
+      "more hard",
+      "lazy"
+    ],
+    "answer": 1,
+    "exp": "So sánh hơn của trạng từ 'hard' là 'harder' (làm việc chăm chỉ hơn)."
+  },
+  {
+    "id": "cd2_u3_7",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 7,
+    "prompt": "Now they all chat with each other ______ than before because they have smartphones.",
+    "options": [
+      "more frequently",
+      "frequent",
+      "frequently",
+      "frequentlier"
+    ],
+    "answer": 0,
+    "exp": "So sánh hơn của trạng từ 'frequently' là 'more frequently' (thường xuyên hơn)."
+  },
+  {
+    "id": "cd2_u3_8",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 8,
+    "prompt": "Social media websites help teenagers find and discuss information much faster; ______, it can be bad if it is overused.",
+    "options": [
+      "moreover",
+      "so",
+      "because",
+      "However"
+    ],
+    "answer": 3,
+    "exp": "Hai mệnh đề mang ý nghĩa tương phản, ngăn cách bởi dấu chấm phẩy (;) và dấu phẩy (,) -> dùng 'However'."
+  },
+  {
+    "id": "cd2_u3_9",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 9,
+    "prompt": "Tom decided to participate in a chess club, ______ he loves playing chess.",
+    "options": [
+      "because",
+      "for",
+      "but",
+      "and"
+    ],
+    "answer": 1,
+    "exp": "Liên từ đẳng lập đứng sau dấu phẩy chỉ nguyên nhân là 'for' (hoặc 'because'). Trong đề gốc đáp án khoanh A/B, ở đây chấp nhận giải thích rõ ràng: 'because' / 'for' chỉ lý do."
+  },
+  {
+    "id": "cd2_u3_10",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 10,
+    "prompt": "Teenagers need encouragement from their parents, ______ not all parents are willing to encourage their children.",
+    "options": [
+      "for",
+      "and",
+      "but",
+      "so"
+    ],
+    "answer": 2,
+    "exp": "Hai mệnh đề đối lập nhau -> dùng 'but' (nhưng)."
+  },
+  {
+    "id": "cd2_u3_11",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 11,
+    "prompt": "Many girls worry about their appearance, ______ they often look at themselves in a mirror.",
+    "options": [
+      "but",
+      "so",
+      "or",
+      "for"
+    ],
+    "answer": 1,
+    "exp": "Chỉ kết quả -> dùng 'so' (vì vậy)."
+  },
+  {
+    "id": "cd2_u3_12",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 12,
+    "prompt": "Teenagers should learn to mix with their classmates, ______ they can try to get on with their siblings.",
+    "options": [
+      "so",
+      "for",
+      "or",
+      "yet"
+    ],
+    "answer": 2,
+    "exp": "Đưa ra sự lựa chọn hoặc gợi ý tương đương -> dùng 'or' (hoặc)."
+  },
+  {
+    "id": "cd2_u3_13",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 13,
+    "prompt": "Social media help teens connect with others; ______, they also cause teens to feel lonely.",
+    "options": [
+      "however",
+      "therefore",
+      "otherwise",
+      "although"
+    ],
+    "answer": 0,
+    "exp": "Sau dấu chấm phẩy (;) và trước dấu phẩy (,), diễn tả sự tương phản -> dùng 'however' (tuy nhiên)."
+  },
+  {
+    "id": "cd2_u3_14",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 14,
+    "prompt": "They spend a lot of time surfing the net; ______, they have little time to read books.",
+    "options": [
+      "however",
+      "therefore",
+      "although",
+      "otherwise"
+    ],
+    "answer": 1,
+    "exp": "Diễn tả kết quả sau dấu chấm phẩy (;) -> dùng 'therefore' (do đó, vì vậy)."
+  },
+  {
+    "id": "cd2_u3_15",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 15,
+    "prompt": "In his free time, my younger brother is ______ on taking photos and doing puzzles.",
+    "options": [
+      "fond",
+      "keen",
+      "interested",
+      "crazy"
+    ],
+    "answer": 1,
+    "exp": "Cấu trúc: be keen on + V-ing (thích, say mê làm gì)."
+  },
+  {
+    "id": "cd2_u3_16",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 16,
+    "prompt": "How often do you ______ notifications on Facebook? – Once a day.",
+    "options": [
+      "upload",
+      "browse",
+      "connect",
+      "check"
+    ],
+    "answer": 3,
+    "exp": "Cụm từ: 'check notifications' (kiểm tra thông báo)."
+  },
+  {
+    "id": "cd2_u3_17",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 17,
+    "prompt": "Joining a ______ can be a great way to meet new people who share your interests.",
+    "options": [
+      "forum",
+      "club",
+      "website",
+      "tournament"
+    ],
+    "answer": 1,
+    "exp": "'Joining a club' (Tham gia một câu lạc bộ) là cách tuyệt vời để gặp gỡ những người cùng sở thích."
+  },
+  {
+    "id": "cd2_u3_18",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 18,
+    "prompt": "It's important to ______ when faced with challenges to maintain a clear mind.",
+    "options": [
+      "stay calm",
+      "log on",
+      "request",
+      "cheat on"
+    ],
+    "answer": 0,
+    "exp": "'stay calm' (giữ bình tĩnh) khi đối mặt với thử thách."
+  },
+  {
+    "id": "cd2_u3_19",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 19,
+    "prompt": "______ is a common issue during exams, but effective preparation can help alleviate it.",
+    "options": [
+      "Pressure",
+      "Bully",
+      "Freedom",
+      "Tolerance"
+    ],
+    "answer": 0,
+    "exp": "'Pressure' (Áp lực) là vấn đề phổ biến trong các kỳ thi."
+  },
+  {
+    "id": "cd2_u3_20",
+    "topic": "CD2",
+    "unit": "Unit 3",
+    "type": "mcq",
+    "num": 20,
+    "prompt": "Our ______ club organized a fundraising event for a local animal shelter.",
+    "options": [
+      "singing",
+      "reading",
+      "volunteer",
+      "chess"
+    ],
+    "answer": 2,
+    "exp": "'volunteer club' (câu lạc bộ tình nguyện) tổ chức sự kiện gây quỹ cho trạm cứu hộ động vật."
+  },
+  {
+    "id": "cd3_u1_1",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 1,
+    "prompt": "I like cooking in my free time. It makes me feel ______.",
+    "hint": "relax",
+    "answer": "relaxed",
+    "options": [
+      "relaxed",
+      "relaxing",
+      "relaxation",
+      "relaxes"
+    ],
+    "exp": "Cảm xúc của con người (me) sau 'feel' -> dùng tính từ đuôi -ed: 'relaxed' (thư giãn)."
+  },
+  {
+    "id": "cd3_u1_2",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 2,
+    "prompt": "My sister doesn't like surfing the Internet, she says it is ______.",
+    "hint": "bore",
+    "answer": "boring",
+    "options": [
+      "boring",
+      "bored",
+      "boredom",
+      "boringly"
+    ],
+    "exp": "Mô tả tính chất của sự việc (surfing the Internet) -> dùng tính từ đuôi -ing: 'boring' (nhàm chán)."
+  },
+  {
+    "id": "cd3_u1_3",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 3,
+    "prompt": "Skateboarding is her hobby. It is also one of the most ______ sports of the teenagers in this town.",
+    "hint": "popularity",
+    "answer": "popular",
+    "options": [
+      "popular",
+      "popularity",
+      "popularly",
+      "unpopular"
+    ],
+    "exp": "Bổ nghĩa cho danh từ 'sports' trong cấu trúc so sánh nhất 'the most + adj + N' -> 'popular' (phổ biến)."
+  },
+  {
+    "id": "cd3_u1_4",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 4,
+    "prompt": "My close friend gave me a ______ present on my birthday. I like it so much.",
+    "hint": "wonder",
+    "answer": "wonderful",
+    "options": [
+      "wonderful",
+      "wonder",
+      "wonderfully",
+      "wonders"
+    ],
+    "exp": "Trước danh từ 'present' cần tính từ -> 'wonderful' (tuyệt vời)."
+  },
+  {
+    "id": "cd3_u1_5",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 5,
+    "prompt": "My brother works as a volunteer for an animal protection ______. He really loves his job.",
+    "hint": "organize",
+    "answer": "organization",
+    "options": [
+      "organization",
+      "organized",
+      "organizer",
+      "organizing"
+    ],
+    "exp": "Sau cụm 'an animal protection' cần danh từ chỉ tổ chức -> 'organization'."
+  },
+  {
+    "id": "cd3_u1_6",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 6,
+    "prompt": "People in my country are very warm and ______.",
+    "hint": "friend",
+    "answer": "friendly",
+    "options": [
+      "friendly",
+      "friendship",
+      "friendliness",
+      "friends"
+    ],
+    "exp": "Cấu trúc song song với tính từ 'warm' -> cần tính từ 'friendly' (thân thiện)."
+  },
+  {
+    "id": "cd3_u1_7",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 7,
+    "prompt": "An ______ is a child whose parents are dead.",
+    "hint": "orphanage",
+    "answer": "orphan",
+    "options": [
+      "orphan",
+      "orphanage",
+      "orphaned",
+      "orphans"
+    ],
+    "exp": "Sau mạo từ 'An' và chỉ một đứa trẻ mồ côi -> danh từ chỉ người số ít: 'orphan'."
+  },
+  {
+    "id": "cd3_u1_8",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 8,
+    "prompt": "L.A Hill is a ______ writer.",
+    "hint": "humor",
+    "answer": "humorous",
+    "options": [
+      "humorous",
+      "humor",
+      "humorously",
+      "humors"
+    ],
+    "exp": "Trước danh từ 'writer' cần tính từ -> 'humorous' (hài hước)."
+  },
+  {
+    "id": "cd3_u1_9",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 9,
+    "prompt": "I'm ______ sorry for the delay.",
+    "hint": "extreme",
+    "answer": "extremely",
+    "options": [
+      "extremely",
+      "extreme",
+      "extremes",
+      "extremity"
+    ],
+    "exp": "Trước tính từ 'sorry' cần trạng từ chỉ mức độ -> 'extremely' (cực kỳ)."
+  },
+  {
+    "id": "cd3_u1_10",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 10,
+    "prompt": "Role-play is ______ in developing communication skills.",
+    "hint": "help",
+    "answer": "helpful",
+    "options": [
+      "helpful",
+      "helpless",
+      "helping",
+      "helper"
+    ],
+    "exp": "Sau động từ to be 'is' cần tính từ mang nghĩa tích cực -> 'helpful' (hữu ích)."
+  },
+  {
+    "id": "cd3_u1_11",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 11,
+    "prompt": "There are four ______ in my house.",
+    "hint": "bookshelf",
+    "answer": "bookshelves",
+    "options": [
+      "bookshelves",
+      "bookshelf",
+      "bookshelfs",
+      "bookcase"
+    ],
+    "exp": "Sau số từ 'four' cần danh từ số nhiều. 'bookshelf' đổi -f thành -ves -> 'bookshelves'."
+  },
+  {
+    "id": "cd3_u1_12",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 12,
+    "prompt": "The photocopy is between the ______ and the drugstore.",
+    "hint": "bake",
+    "answer": "bakery",
+    "options": [
+      "bakery",
+      "baker",
+      "baking",
+      "baked"
+    ],
+    "exp": "Chỉ địa điểm (tiệm bánh) tương ứng với ' the drugstore' -> 'bakery'."
+  },
+  {
+    "id": "cd3_u1_13",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 13,
+    "prompt": "We must be ______ when we cross the road.",
+    "hint": "care",
+    "answer": "careful",
+    "options": [
+      "careful",
+      "careless",
+      "carefully",
+      "caring"
+    ],
+    "exp": "Sau 'be' cần tính từ. Khi qua đường chúng ta phải cẩn thận -> 'careful'."
+  },
+  {
+    "id": "cd3_u1_14",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 14,
+    "prompt": "Air ______ is a big problem in many cities in the world.",
+    "hint": "pollute",
+    "answer": "pollution",
+    "options": [
+      "pollution",
+      "polluted",
+      "pollutant",
+      "polluting"
+    ],
+    "exp": "Cụm danh từ 'Air pollution' (Ô nhiễm không khí)."
+  },
+  {
+    "id": "cd3_u1_15",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 15,
+    "prompt": "Yoko is from Japan. She is ______.",
+    "hint": "Japan",
+    "answer": "Japanese",
+    "options": [
+      "Japanese",
+      "Japan",
+      "Japaneses",
+      "Japanian"
+    ],
+    "exp": "Chỉ quốc tịch / người Nhật Bản -> 'Japanese'."
+  },
+  {
+    "id": "cd3_u1_16",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 16,
+    "prompt": "The Internet is very ______, it takes up a lot of our time.",
+    "hint": "addict",
+    "answer": "addictive",
+    "options": [
+      "addictive",
+      "addicted",
+      "addiction",
+      "addict"
+    ],
+    "exp": "Mô tả tính chất gây nghiện của Internet -> tính từ 'addictive'."
+  },
+  {
+    "id": "cd3_u1_17",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 17,
+    "prompt": "I enjoy ______ with friends and going out at the weekend.",
+    "hint": "social",
+    "answer": "socializing",
+    "options": [
+      "socializing",
+      "socialize",
+      "socialization",
+      "sociable"
+    ],
+    "exp": "Sau 'enjoy' + V-ing. Động từ của 'social' là 'socialize' (giao lưu) -> 'socializing'."
+  },
+  {
+    "id": "cd3_u1_18",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 18,
+    "prompt": "Sitting in front of the computer too long can cause ______.",
+    "hint": "obese",
+    "answer": "obesity",
+    "options": [
+      "obesity",
+      "obese",
+      "obesely",
+      "obesities"
+    ],
+    "exp": "Sau ngoại động từ 'cause' (gây ra) cần danh từ -> 'obesity' (bệnh béo phì)."
+  },
+  {
+    "id": "cd3_u1_19",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 19,
+    "prompt": "Are you ______ about the new Gears Of War games?",
+    "hint": "excite",
+    "answer": "excited",
+    "options": [
+      "excited",
+      "exciting",
+      "excitement",
+      "excite"
+    ],
+    "exp": "Cấu trúc 'be excited about sth' (hào hứng về cái gì - chỉ cảm xúc của người)."
+  },
+  {
+    "id": "cd3_u1_20",
+    "topic": "CD3",
+    "unit": "Unit 1",
+    "type": "wordform",
+    "num": 20,
+    "prompt": "She listens to classical music for ______.",
+    "hint": "relax",
+    "answer": "relaxation",
+    "options": [
+      "relaxation",
+      "relaxed",
+      "relaxing",
+      "relax"
+    ],
+    "exp": "Sau giới từ 'for' cần danh từ -> 'relaxation' (sự thư giãn)."
+  },
+  {
+    "id": "cd3_u2_1",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 1,
+    "prompt": "Iceland is considered the most ______ country in the world.",
+    "hint": "peace",
+    "answer": "peaceful",
+    "options": [
+      "peaceful",
+      "peace",
+      "peacefully",
+      "peaces"
+    ],
+    "exp": "Bổ nghĩa cho danh từ 'country' trong so sánh nhất 'the most + adj + N' -> 'peaceful' (yên bình)."
+  },
+  {
+    "id": "cd3_u2_2",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 2,
+    "prompt": "A ______ lifestyle has its advantages and disadvantages.",
+    "hint": "nomad",
+    "answer": "nomadic",
+    "options": [
+      "nomadic",
+      "nomad",
+      "nomads",
+      "nomadically"
+    ],
+    "exp": "Bổ nghĩa cho danh từ 'lifestyle' cần tính từ -> 'nomadic' (du mục)."
+  },
+  {
+    "id": "cd3_u2_3",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 3,
+    "prompt": "My brother has been a stamp ______ for several years.",
+    "hint": "collect",
+    "answer": "collector",
+    "options": [
+      "collector",
+      "collection",
+      "collective",
+      "collecting"
+    ],
+    "exp": "'a stamp collector' (người sưu tầm tem - danh từ chỉ người)."
+  },
+  {
+    "id": "cd3_u2_4",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 4,
+    "prompt": "It is a/an ______ place to hold a picnic because it is too far from the road.",
+    "hint": "convenience",
+    "answer": "inconvenient",
+    "options": [
+      "inconvenient",
+      "convenient",
+      "convenience",
+      "inconvenience"
+    ],
+    "exp": "Vì quá xa đường lớn ('too far from the road') nên đó là nơi bất tiện -> 'inconvenient'."
+  },
+  {
+    "id": "cd3_u2_5",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 5,
+    "prompt": "Drinking water in some areas may be ______.",
+    "hint": "safe",
+    "answer": "unsafe",
+    "options": [
+      "unsafe",
+      "safe",
+      "safely",
+      "safety"
+    ],
+    "exp": "Nước uống ở một số khu vực có thể không an toàn -> tính từ 'unsafe'."
+  },
+  {
+    "id": "cd3_u2_6",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 6,
+    "prompt": "During my stay in the village, I was ______ with several local farmers.",
+    "hint": "friend",
+    "answer": "friendly",
+    "options": [
+      "friendly",
+      "friendship",
+      "friend",
+      "friends"
+    ],
+    "exp": "Cấu trúc 'be friendly with sb' (thân thiện với ai)."
+  },
+  {
+    "id": "cd3_u2_7",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 7,
+    "prompt": "Encouraging children to eat and drink ______ is very important.",
+    "hint": "health",
+    "answer": "healthily",
+    "options": [
+      "healthily",
+      "healthy",
+      "health",
+      "unhealthy"
+    ],
+    "exp": "Bổ nghĩa cho động từ 'eat and drink' cần trạng từ -> 'healthily' (một cách lành mạnh)."
+  },
+  {
+    "id": "cd3_u2_8",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 8,
+    "prompt": "Local people in the village often wear their ______ costumes during the festivals.",
+    "hint": "tradition",
+    "answer": "traditional",
+    "options": [
+      "traditional",
+      "tradition",
+      "traditionally",
+      "traditions"
+    ],
+    "exp": "Trước danh từ 'costumes' cần tính từ -> 'traditional' (truyền thống)."
+  },
+  {
+    "id": "cd3_u2_9",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 9,
+    "prompt": "Please give ______ to that charity to help the homeless after the flood.",
+    "hint": "generous",
+    "answer": "generosity",
+    "options": [
+      "generosity",
+      "generously",
+      "generous",
+      "generousness"
+    ],
+    "exp": "Sau động từ 'give' cần danh từ (hoặc trạng từ bổ nghĩa cho give). Theo đáp án đề cương là danh từ 'generosity' (sự hào phóng)."
+  },
+  {
+    "id": "cd3_u2_10",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 10,
+    "prompt": "The baby slept very ______ because the bed was really comfortable.",
+    "hint": "sound",
+    "answer": "soundly",
+    "options": [
+      "soundly",
+      "sound",
+      "sounds",
+      "sounding"
+    ],
+    "exp": "'sleep soundly': ngủ ngon giấc (trạng từ bổ nghĩa cho động từ 'slept')."
+  },
+  {
+    "id": "cd3_u2_11",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 11,
+    "prompt": "People in my country are very open and ______. I like to go there when I have free time.",
+    "hint": "friend",
+    "answer": "friendly",
+    "options": [
+      "friendly",
+      "friend",
+      "friendship",
+      "friends"
+    ],
+    "exp": "Song song với tính từ 'open' -> tính từ 'friendly' (thân thiện)."
+  },
+  {
+    "id": "cd3_u2_12",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 12,
+    "prompt": "Some of my ______ live in the countryside.",
+    "hint": "relate",
+    "answer": "relatives",
+    "options": [
+      "relatives",
+      "relative",
+      "relations",
+      "relationship"
+    ],
+    "exp": "Sau 'Some of my' và động từ nguyên thể 'live' -> danh từ số nhiều chỉ người: 'relatives' (họ hàng)."
+  },
+  {
+    "id": "cd3_u2_13",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 13,
+    "prompt": "Some people say that the country is more ______ for the people who are retired.",
+    "hint": "suit",
+    "answer": "suitable",
+    "options": [
+      "suitable",
+      "suit",
+      "suitably",
+      "suited"
+    ],
+    "exp": "Cấu trúc 'be suitable for sb' (phù hợp với ai)."
+  },
+  {
+    "id": "cd3_u2_14",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 14,
+    "prompt": "Entertainment is difficult to find in the country, ______ in the evening.",
+    "hint": "particular",
+    "answer": "particularly",
+    "options": [
+      "particularly",
+      "particular",
+      "particularity",
+      "particulars"
+    ],
+    "exp": "Trạng từ 'particularly' (đặc biệt là) nhấn mạnh cho cụm trạng ngữ 'in the evening'."
+  },
+  {
+    "id": "cd3_u2_15",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 15,
+    "prompt": "Natural disasters can ______ destroy a harvest and leave the farmers with little or no money until the following year.",
+    "hint": "easy",
+    "answer": "easily",
+    "options": [
+      "easily",
+      "easy",
+      "easier",
+      "ease"
+    ],
+    "exp": "Giữa 'can' và động từ 'destroy' cần trạng từ -> 'easily' (dễ dàng)."
+  },
+  {
+    "id": "cd3_u2_16",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 16,
+    "prompt": "The pollution in our city is much ______ than it used to be.",
+    "hint": "bad",
+    "answer": "worse",
+    "options": [
+      "worse",
+      "badly",
+      "worst",
+      "badder"
+    ],
+    "exp": "Có 'than' -> so sánh hơn của 'bad' là 'worse'."
+  },
+  {
+    "id": "cd3_u2_17",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 17,
+    "prompt": "These trousers are too wide. Do you have any that are ______?",
+    "hint": "narrow",
+    "answer": "narrower",
+    "options": [
+      "narrower",
+      "narrowly",
+      "narrowest",
+      "narrow"
+    ],
+    "exp": "So sánh hơn với chiếc quần quá rộng trước đó -> 'narrower' (hẹp/ôm hơn)."
+  },
+  {
+    "id": "cd3_u2_18",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 18,
+    "prompt": "My mother always gets up ______ than everybody else in the house.",
+    "hint": "early",
+    "answer": "earlier",
+    "options": [
+      "earlier",
+      "early",
+      "earliest",
+      "more early"
+    ],
+    "exp": "Có 'than' -> so sánh hơn của trạng từ 'early' là 'earlier' (sớm hơn)."
+  },
+  {
+    "id": "cd3_u2_19",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 19,
+    "prompt": "Max finished the homework ______ than anyone else in the class.",
+    "hint": "fast",
+    "answer": "faster",
+    "options": [
+      "faster",
+      "fastly",
+      "fastest",
+      "more fast"
+    ],
+    "exp": "Có 'than' -> so sánh hơn của trạng từ 'fast' là 'faster' (nhanh hơn)."
+  },
+  {
+    "id": "cd3_u2_20",
+    "topic": "CD3",
+    "unit": "Unit 2",
+    "type": "wordform",
+    "num": 20,
+    "prompt": "Get rid of the sorrow! You will do it ______ next time.",
+    "hint": "good",
+    "answer": "better",
+    "options": [
+      "better",
+      "well",
+      "best",
+      "gooder"
+    ],
+    "exp": "Bổ nghĩa cho 'do it' và so sánh với lần trước ('next time') -> so sánh hơn của 'well' là 'better'."
+  },
+  {
+    "id": "cd3_u3_1",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 1,
+    "prompt": "I think Tom and Mary have known each other since their ______.",
+    "hint": "child",
+    "answer": "childhood",
+    "options": [
+      "childhood",
+      "children",
+      "childish",
+      "childlike"
+    ],
+    "exp": "'since their childhood' (từ thời thơ ấu của họ)."
+  },
+  {
+    "id": "cd3_u3_2",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 2,
+    "prompt": "My brother feels ______ when he's playing the guitar.",
+    "hint": "relax",
+    "answer": "relaxed",
+    "options": [
+      "relaxed",
+      "relaxing",
+      "relaxation",
+      "relaxes"
+    ],
+    "exp": "Chỉ cảm xúc của người ('My brother') sau 'feels' -> 'relaxed'."
+  },
+  {
+    "id": "cd3_u3_3",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 3,
+    "prompt": "Lan was upset because her parents ______ her.",
+    "hint": "understand",
+    "answer": "misunderstood",
+    "options": [
+      "misunderstood",
+      "understood",
+      "misunderstand",
+      "understanding"
+    ],
+    "exp": "Lan buồn (upset - quá khứ) vì bố mẹ hiểu lầm cô ấy -> quá khứ đơn của 'misunderstand' là 'misunderstood'."
+  },
+  {
+    "id": "cd3_u3_4",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 4,
+    "prompt": "I often suffer from ______ during the wintertime.",
+    "hint": "depress",
+    "answer": "depression",
+    "options": [
+      "depression",
+      "depressed",
+      "depressing",
+      "depressive"
+    ],
+    "exp": "Sau giới từ 'from' cần danh từ -> 'depression' (chứng trầm cảm/buồn bã)."
+  },
+  {
+    "id": "cd3_u3_5",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 5,
+    "prompt": "Everything was ______ to me when I visited Gold Coast for the first time.",
+    "hint": "excite",
+    "answer": "exciting",
+    "options": [
+      "exciting",
+      "excited",
+      "excitement",
+      "excites"
+    ],
+    "exp": "Chủ ngữ là 'Everything' (sự vật) -> tính từ đuôi -ing: 'exciting' (thú vị)."
+  },
+  {
+    "id": "cd3_u3_6",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 6,
+    "prompt": "When you grow up, you'll feel you want more ______ and responsibility.",
+    "hint": "depend",
+    "answer": "independence",
+    "options": [
+      "independence",
+      "dependence",
+      "independent",
+      "dependent"
+    ],
+    "exp": "Khi lớn lên, bạn muốn có nhiều sự tự lập ('independence') và trách nhiệm hơn."
+  },
+  {
+    "id": "cd3_u3_7",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 7,
+    "prompt": "We all ______ with you when we heard that you failed the driving test again.",
+    "hint": "sympathy",
+    "answer": "sympathized",
+    "options": [
+      "sympathized",
+      "sympathize",
+      "sympathetic",
+      "sympathy"
+    ],
+    "exp": "Cần động từ ở thì quá khứ đơn (vì vế sau có 'heard') -> 'sympathized' (hoặc 'sympathised' - cảm thông)."
+  },
+  {
+    "id": "cd3_u3_8",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 8,
+    "prompt": "Nga's dream is to be a ______, but her parents want her to be a medical doctor.",
+    "hint": "music",
+    "answer": "musician",
+    "options": [
+      "musician",
+      "musical",
+      "music",
+      "musicians"
+    ],
+    "exp": "Sau 'to be a' cần danh từ chỉ nghề nghiệp -> 'musician' (nhạc sĩ / nhạc công)."
+  },
+  {
+    "id": "cd3_u3_9",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 9,
+    "prompt": "Between 11 and 13 years of age, the adolescent's brain experiences rapid ______ of nerve cells.",
+    "hint": "grow",
+    "answer": "growth",
+    "options": [
+      "growth",
+      "growing",
+      "grown",
+      "grows"
+    ],
+    "exp": "Sau tính từ 'rapid' và trước giới từ 'of' cần danh từ -> 'growth' (sự phát triển)."
+  },
+  {
+    "id": "cd3_u3_10",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 10,
+    "prompt": "I feel really tired after spending a ______ night studying for the exam.",
+    "hint": "sleep",
+    "answer": "sleepless",
+    "options": [
+      "sleepless",
+      "sleepy",
+      "sleeping",
+      "asleep"
+    ],
+    "exp": "'a sleepless night': một đêm mất ngủ / thức trắng học bài thi."
+  },
+  {
+    "id": "cd3_u3_11",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 11,
+    "prompt": "Tomorrow I am having a 45-minute English test. I know about the grammar and I've learnt by heart all the new words but I still feel ______.",
+    "hint": "worry",
+    "answer": "worried",
+    "options": [
+      "worried",
+      "worrying",
+      "worry",
+      "worries"
+    ],
+    "exp": "Sau 'feel' chỉ cảm xúc của người -> tính từ 'worried' (lo lắng)."
+  },
+  {
+    "id": "cd3_u3_12",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 12,
+    "prompt": "He thinks joining in an English Speaking Club will help him to communicate with foreigners ______.",
+    "hint": "confident",
+    "answer": "confidently",
+    "options": [
+      "confidently",
+      "confident",
+      "confidence",
+      "confidential"
+    ],
+    "exp": "Bổ nghĩa cho động từ 'communicate' cần trạng từ -> 'confidently' (một cách tự tin)."
+  },
+  {
+    "id": "cd3_u3_13",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 13,
+    "prompt": "Lan has made a new dress for herself and she feels so ______ with her fashionable dress.",
+    "hint": "delight",
+    "answer": "delighted",
+    "options": [
+      "delighted",
+      "delightful",
+      "delight",
+      "delighting"
+    ],
+    "exp": "Cấu trúc 'feel delighted with sth' (cảm thấy vui sướng, hài lòng với cái gì)."
+  },
+  {
+    "id": "cd3_u3_14",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 14,
+    "prompt": "We felt ______ because it rained all the day and we had to stay inside during our excursion to the beach.",
+    "hint": "disappoint",
+    "answer": "disappointed",
+    "options": [
+      "disappointed",
+      "disappointing",
+      "disappointment",
+      "disappoint"
+    ],
+    "exp": "Chỉ cảm xúc của người ('We felt') -> tính từ đuôi -ed: 'disappointed' (thất vọng)."
+  },
+  {
+    "id": "cd3_u3_15",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 15,
+    "prompt": "Many students complain about their school pressures and ______. Can you think of an example of them?",
+    "hint": "frustrate",
+    "answer": "frustrations",
+    "options": [
+      "frustrations",
+      "frustrated",
+      "frustrating",
+      "frustrate"
+    ],
+    "exp": "Song song với danh từ số nhiều 'pressures' -> danh từ số nhiều 'frustrations' (những sự nản lòng/bực dọc)."
+  },
+  {
+    "id": "cd3_u3_16",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 16,
+    "prompt": "Extracurricular activities provide teenagers with opportunities to make new ______.",
+    "hint": "connect",
+    "answer": "connections",
+    "options": [
+      "connections",
+      "connection",
+      "connected",
+      "connecting"
+    ],
+    "exp": "Cụm từ 'make new connections' (tạo lập những mối kết nối/quan hệ mới)."
+  },
+  {
+    "id": "cd3_u3_17",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 17,
+    "prompt": "Online ______, or cyberbullying, has become a significant issue among teenagers.",
+    "hint": "bully",
+    "answer": "bullying",
+    "options": [
+      "bullying",
+      "bully",
+      "bullied",
+      "bullies"
+    ],
+    "exp": "'Online bullying' (bắt nạt trực tuyến), đồng nghĩa với 'cyberbullying'."
+  },
+  {
+    "id": "cd3_u3_18",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 18,
+    "prompt": "Teenagers often use their ______ to research school projects and homework assignments.",
+    "hint": "browse",
+    "answer": "browsers",
+    "options": [
+      "browsers",
+      "browser",
+      "browsing",
+      "browsed"
+    ],
+    "exp": "Sau tính từ sở hữu 'their' cần danh từ chỉ công cụ -> 'browsers' (các trình duyệt web)."
+  },
+  {
+    "id": "cd3_u3_19",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 19,
+    "prompt": "Many teenagers enjoy exploring ______ projects like knitting, woodworking, or pottery.",
+    "hint": "craft",
+    "answer": "craft",
+    "options": [
+      "craft",
+      "crafts",
+      "crafting",
+      "craftsman"
+    ],
+    "exp": "Danh từ phụ trợ 'craft' đứng trước 'projects' -> 'craft projects' (các dự án thủ công)."
+  },
+  {
+    "id": "cd3_u3_20",
+    "topic": "CD3",
+    "unit": "Unit 3",
+    "type": "wordform",
+    "num": 20,
+    "prompt": "Regular breaks and a well-organized study environment can significantly improve ______ for teenagers.",
+    "hint": "concentrate",
+    "answer": "concentration",
+    "options": [
+      "concentration",
+      "concentrated",
+      "concentrating",
+      "concentrate"
+    ],
+    "exp": "Sau ngoại động từ 'improve' (cải thiện) cần danh từ -> 'concentration' (sự tập trung)."
+  },
+  {
+    "id": "cd5_u1_r1",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "reorder",
+    "num": 1,
+    "prompt": "to / you / listening / like / music? / Do",
+    "answer": "Do you like listening to music?",
+    "alts": [
+      "Do you like listening to music?"
+    ],
+    "exp": "Câu nghi vấn hiện tại đơn: Do you like + V-ing (listening to music)?"
+  },
+  {
+    "id": "cd5_u1_r2",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "reorder",
+    "num": 2,
+    "prompt": "swimming / the / parents / enjoy / My / in / sea. / really",
+    "answer": "My parents really enjoy swimming in the sea.",
+    "alts": [
+      "My parents really enjoy swimming in the sea."
+    ],
+    "exp": "Cấu trúc: S (My parents) + adv (really) + V (enjoy) + V-ing (swimming in the sea)."
+  },
+  {
+    "id": "cd5_u1_r3",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "reorder",
+    "num": 3,
+    "prompt": "cycling / Do / fancy / now? / you",
+    "answer": "Do you fancy cycling now?",
+    "alts": [
+      "Do you fancy cycling now?"
+    ],
+    "exp": "Cấu trúc: Do you fancy + V-ing (cycling) + now?"
+  },
+  {
+    "id": "cd5_u1_r4",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "reorder",
+    "num": 4,
+    "prompt": "and / I / My / playing / adore / chess. / brother",
+    "answer": "My brother and I adore playing chess.",
+    "alts": [
+      "My brother and I adore playing chess.",
+      "I and my brother adore playing chess."
+    ],
+    "exp": "Cấu trúc: My brother and I (hoặc I and my brother) + adore + V-ing (playing chess)."
+  },
+  {
+    "id": "cd5_u1_r5",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "reorder",
+    "num": 5,
+    "prompt": "collecting / dislikes / stamps. / Rose",
+    "answer": "Rose dislikes collecting stamps.",
+    "alts": [
+      "Rose dislikes collecting stamps."
+    ],
+    "exp": "Cấu trúc: Rose + dislikes + V-ing (collecting stamps)."
+  },
+  {
+    "id": "cd5_u1_r6",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "reorder",
+    "num": 6,
+    "prompt": "detests / Laura / pottery. / making",
+    "answer": "Laura detests making pottery.",
+    "alts": [
+      "Laura detests making pottery."
+    ],
+    "exp": "Cấu trúc: Laura + detests + V-ing (making pottery - làm gốm)."
+  },
+  {
+    "id": "cd5_u1_r7",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "reorder",
+    "num": 7,
+    "prompt": "laboratory / Minh Nam and I / spending / love / a / do / hours / to / an experiment. / in",
+    "answer": "Minh Nam and I love spending hours in a laboratory to do an experiment.",
+    "alts": [
+      "Minh Nam and I love spending hours in a laboratory to do an experiment."
+    ],
+    "exp": "Minh Nam and I love spending hours in a laboratory to do an experiment."
+  },
+  {
+    "id": "cd5_u1_r8",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "reorder",
+    "num": 8,
+    "prompt": "interested in / I / fishing / cold / am not / weather. / in / this",
+    "answer": "I am not interested in fishing in this cold weather.",
+    "alts": [
+      "I am not interested in fishing in this cold weather."
+    ],
+    "exp": "Cấu trúc: be (not) interested in + V-ing (fishing) + in this cold weather."
+  },
+  {
+    "id": "cd5_u1_w1",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "rewrite",
+    "num": 1,
+    "prompt": "It takes us more than two hours to see the film “Avatar”.",
+    "answer": "The film “Avatar” lasts for more than two hours.",
+    "alts": [
+      "The film “Avatar” lasts (for) more than two hours.",
+      "The film \"Avatar\" lasts for more than two hours.",
+      "The film \"Avatar\" lasts more than two hours.",
+      "We spend more than two hours seeing the film \"Avatar\".",
+      "We spend more than two hours watching the film \"Avatar\".",
+      "We spend more than two hours seeing/watching the film \"Avatar\"."
+    ],
+    "options": [
+      "The film “Avatar” lasts (for) more than two hours. / We spend more than two hours seeing/watching the film “Avatar”.",
+      "The film “Avatar” takes more than two hours seeing.",
+      "We spend more than two hours to see the film “Avatar”.",
+      "The film “Avatar” is lasting for two hours."
+    ],
+    "exp": "Cấu trúc tương đương: It takes sb + time + to V = S + spend(s) + time + V-ing = S (bộ phim) + lasts (for) + time."
+  },
+  {
+    "id": "cd5_u1_w2",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "rewrite",
+    "num": 2,
+    "prompt": "She likes to hang out with friends on Saturday evening.",
+    "answer": "She's interested in hanging out with friends on Saturday evening.",
+    "alts": [
+      "She's interested in hanging out with friends on Saturday evening.",
+      "She is interested in hanging out with friends on Saturday evening."
+    ],
+    "options": [
+      "She's interested in hanging out with friends on Saturday evening.",
+      "She's interested in hang out with friends on Saturday evening.",
+      "She's interested to hang out with friends on Saturday evening.",
+      "She's fond on hanging out with friends on Saturday evening."
+    ],
+    "exp": "like to V = be interested in + V-ing (quan tâm/thích làm gì)."
+  },
+  {
+    "id": "cd5_u1_w3",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "rewrite",
+    "num": 3,
+    "prompt": "She only allows her children to watch television at weekends.",
+    "answer": "She only lets her children watch television at weekends.",
+    "alts": [
+      "She only lets her children watch television at weekends."
+    ],
+    "options": [
+      "She only lets her children watch television at weekends.",
+      "She only lets her children to watch television at weekends.",
+      "She only lets her children watching television at weekends.",
+      "She only makes her children to watch television at weekends."
+    ],
+    "exp": "allow sb to V = let sb + V(nguyên thể) (cho phép ai làm gì)."
+  },
+  {
+    "id": "cd5_u1_w4",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "rewrite",
+    "num": 4,
+    "prompt": "Could you help me with this box?",
+    "answer": "Would you mind helping me with this box?",
+    "alts": [
+      "Would you mind helping me with this box?",
+      "Would you help me with this box?"
+    ],
+    "options": [
+      "Would you mind helping me with this box? (hoặc: Would you help me with this box?)",
+      "Would you mind to help me with this box?",
+      "Could you mind helping me with this box?",
+      "Do you mind to help me with this box?"
+    ],
+    "exp": "Lời nhờ lịch sự: Could you + V? = Would you mind + V-ing? (hoặc Would you + V?)."
+  },
+  {
+    "id": "cd5_u1_w5",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "rewrite",
+    "num": 5,
+    "prompt": "Who will take care of the garden while you are away?",
+    "answer": "Who will look after the garden while you are away?",
+    "alts": [
+      "Who will look after the garden while you are away?"
+    ],
+    "options": [
+      "Who will look after the garden while you are away?",
+      "Who will look for the garden while you are away?",
+      "Who will look at the garden while you are away?",
+      "Who will take after the garden while you are away?"
+    ],
+    "exp": "take care of = look after (chăm sóc, trông nom)."
+  },
+  {
+    "id": "cd5_u1_w6",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "rewrite",
+    "num": 6,
+    "prompt": "How about going window-shopping this afternoon?",
+    "answer": "Shall we go window-shopping this afternoon?",
+    "alts": [
+      "Shall we go window-shopping this afternoon?"
+    ],
+    "options": [
+      "Shall we go window-shopping this afternoon?",
+      "Shall we going window-shopping this afternoon?",
+      "Why don't we going window-shopping this afternoon?",
+      "Let's going window-shopping this afternoon?"
+    ],
+    "exp": "Câu gợi ý: How about + V-ing? = Shall we + V(nguyên thể)?"
+  },
+  {
+    "id": "cd5_u1_w7",
+    "topic": "CD5",
+    "unit": "Unit 1",
+    "type": "rewrite",
+    "num": 7,
+    "prompt": "What leisure activity do you like most?",
+    "answer": "What's your favourite leisure activity?",
+    "alts": [
+      "What's your favourite leisure activity?",
+      "What is your favourite leisure activity?",
+      "What's your favorite leisure activity?"
+    ],
+    "options": [
+      "What's your favourite leisure activity?",
+      "What leisure activity do you favourite most?",
+      "Which is your most like leisure activity?",
+      "What's your leisure activity favourite?"
+    ],
+    "exp": "What + N + do you like most? = What's your favourite + N?"
+  },
+  {
+    "id": "cd5_u2_r1",
+    "topic": "CD5",
+    "unit": "Unit 2",
+    "type": "reorder",
+    "num": 1,
+    "prompt": "her classmates. / Jane / English / speaks / more / fluently / than",
+    "answer": "Jane speaks English more fluently than her classmates.",
+    "alts": [
+      "Jane speaks English more fluently than her classmates."
+    ],
+    "exp": "So sánh hơn của trạng từ: Jane speaks English more fluently than her classmates."
+  },
+  {
+    "id": "cd5_u2_r2",
+    "topic": "CD5",
+    "unit": "Unit 2",
+    "type": "reorder",
+    "num": 2,
+    "prompt": "anyone / harder / Emma / in the office. / works / than",
+    "answer": "Emma works harder than anyone in the office.",
+    "alts": [
+      "Emma works harder than anyone in the office."
+    ],
+    "exp": "So sánh hơn với trạng từ ngắn: Emma works harder than anyone in the office."
+  },
+  {
+    "id": "cd5_u2_r3",
+    "topic": "CD5",
+    "unit": "Unit 2",
+    "type": "reorder",
+    "num": 3,
+    "prompt": "Planes / higher / can / than / fly / birds.",
+    "answer": "Planes can fly higher than birds.",
+    "alts": [
+      "Planes can fly higher than birds."
+    ],
+    "exp": "So sánh hơn của trạng từ ngắn 'high': Planes can fly higher than birds."
+  },
+  {
+    "id": "cd5_u2_r4",
+    "topic": "CD5",
+    "unit": "Unit 2",
+    "type": "reorder",
+    "num": 4,
+    "prompt": "The Spanish athlete / the other runners. / ran / than / faster",
+    "answer": "The Spanish athlete ran faster than the other runners.",
+    "alts": [
+      "The Spanish athlete ran faster than the other runners."
+    ],
+    "exp": "So sánh hơn của trạng từ 'fast': The Spanish athlete ran faster than the other runners."
+  },
+  {
+    "id": "cd5_u2_r5",
+    "topic": "CD5",
+    "unit": "Unit 2",
+    "type": "reorder",
+    "num": 5,
+    "prompt": "Helen / than / more / other people. / walked / slowly",
+    "answer": "Helen walked more slowly than other people.",
+    "alts": [
+      "Helen walked more slowly than other people."
+    ],
+    "exp": "So sánh hơn của trạng từ 'slowly': Helen walked more slowly than other people."
+  },
+  {
+    "id": "cd5_u2_r6",
+    "topic": "CD5",
+    "unit": "Unit 2",
+    "type": "reorder",
+    "num": 6,
+    "prompt": "Tom / I / than / earlier / arrived / expected.",
+    "answer": "Tom arrived earlier than I expected.",
+    "alts": [
+      "Tom arrived earlier than I expected."
+    ],
+    "exp": "So sánh hơn của trạng từ 'early': Tom arrived earlier than I expected."
+  },
+  {
+    "id": "cd5_u2_w1",
+    "topic": "CD5",
+    "unit": "Unit 2",
+    "type": "rewrite",
+    "num": 1,
+    "prompt": "Hung's brother doesn't drive as carefully as he does. (carefully)",
+    "answer": "Hung drives more carefully than his brother (does).",
+    "alts": [
+      "Hung drives more carefully than his brother (does).",
+      "Hung drives more carefully than his brother does.",
+      "Hung drives more carefully than his brother."
+    ],
+    "options": [
+      "Hung drives more carefully than his brother (does).",
+      "Hung's brother drives more carefully than Hung does.",
+      "Hung drives carefully than his brother does.",
+      "Hung drives as carefully as his brother does."
+    ],
+    "exp": "Anh của Hùng lái xe không cẩn thận bằng Hùng -> Hùng lái xe cẩn thận hơn anh của mình."
+  },
+  {
+    "id": "cd5_u2_w2",
+    "topic": "CD5",
+    "unit": "Unit 2",
+    "type": "rewrite",
+    "num": 2,
+    "prompt": "Today we play worse than we did yesterday. (well)",
+    "answer": "Yesterday we played better than we did today.",
+    "alts": [
+      "Yesterday we played better than we did today.",
+      "Yesterday we played better than we do today.",
+      "Yesterday we played better than today."
+    ],
+    "options": [
+      "Yesterday we played better than we did today.",
+      "Yesterday we play better than we did today.",
+      "Today we played better than we did yesterday.",
+      "Yesterday we played more well than we did today."
+    ],
+    "exp": "Hôm nay chúng tôi chơi tệ hơn hôm qua -> Hôm qua chúng tôi đã chơi tốt hơn (better) hôm nay."
+  },
+  {
+    "id": "cd5_u2_w3",
+    "topic": "CD5",
+    "unit": "Unit 2",
+    "type": "rewrite",
+    "num": 3,
+    "prompt": "The laboratory in my school is now better equipped than some years ago. (badly)",
+    "answer": "Some years ago, the laboratory in my school was more badly equipped than (it is) now.",
+    "alts": [
+      "Some years ago, the laboratory in my school was more badly equipped than (it is) now.",
+      "Some years ago, the laboratory in my school was more badly equipped than it is now.",
+      "Some years ago, the laboratory in my school was more badly equipped than now."
+    ],
+    "options": [
+      "Some years ago, the laboratory in my school was more badly equipped than (it is) now.",
+      "Some years ago, the laboratory in my school is more badly equipped than now.",
+      "Some years ago, the laboratory in my school was badly equipped than it is now.",
+      "Now the laboratory in my school is more badly equipped than some years ago."
+    ],
+    "exp": "Theo đáp án đề cương: Some years ago, the laboratory in my school was more badly equipped than (it is) now."
+  },
+  {
+    "id": "cd5_u2_w4",
+    "topic": "CD5",
+    "unit": "Unit 2",
+    "type": "rewrite",
+    "num": 4,
+    "prompt": "Phong was a quicker walker than his friends. (quickly)",
+    "answer": "Phong walked more quickly than his friends (did).",
+    "alts": [
+      "Phong walked more quickly than his friends (did).",
+      "Phong walked more quickly than his friends did.",
+      "Phong walked more quickly than his friends."
+    ],
+    "options": [
+      "Phong walked more quickly than his friends (did).",
+      "Phong walks more quickly than his friends did.",
+      "Phong walked quicklier than his friends did.",
+      "His friends walked more quickly than Phong did."
+    ],
+    "exp": "Chuyển từ cụm danh từ (was a quicker walker) sang động từ + trạng từ (walked more quickly)."
+  },
+  {
+    "id": "cd5_u2_w5",
+    "topic": "CD5",
+    "unit": "Unit 2",
+    "type": "rewrite",
+    "num": 5,
+    "prompt": "Maria and her sister talked louder than the other guests. (quietly)",
+    "answer": "The other guests talked more quietly than Maria and her sister (did).",
+    "alts": [
+      "The other guests talked more quietly than Maria and her sister (did).",
+      "The other guests talked more quietly than Maria and her sister did.",
+      "The other guests talked more quietly than Maria and her sister."
+    ],
+    "options": [
+      "The other guests talked more quietly than Maria and her sister (did).",
+      "Maria and her sister talked more quietly than the other guests did.",
+      "The other guests talk more quietly than Maria and her sister did.",
+      "The other guests talked quietlier than Maria and her sister."
+    ],
+    "exp": "Maria và chị nói to hơn các vị khách khác -> Các vị khách khác nói nhỏ/khẽ hơn (more quietly) Maria và chị cô ấy."
+  },
+  {
+    "id": "cd5_u2_w6",
+    "topic": "CD5",
+    "unit": "Unit 2",
+    "type": "rewrite",
+    "num": 6,
+    "prompt": "Trung drives more carefully than Minh. (carelessly)",
+    "answer": "Minh drives more carelessly than Trung (does).",
+    "alts": [
+      "Minh drives more carelessly than Trung (does).",
+      "Minh drives more carelessly than Trung does.",
+      "Minh drives more carelessly than Trung."
+    ],
+    "options": [
+      "Minh drives more carelessly than Trung (does).",
+      "Trung drives more carelessly than Minh (does).",
+      "Minh drove more carelessly than Trung does.",
+      "Minh drives carelessly than Trung does."
+    ],
+    "exp": "Trung lái xe cẩn thận hơn Minh -> Minh lái xe bất cẩn hơn (more carelessly) Trung."
+  },
+  {
+    "id": "cd5_u3_r1",
+    "topic": "CD5",
+    "unit": "Unit 3",
+    "type": "reorder",
+    "num": 1,
+    "prompt": "We / class forum. / often / our / share / ideas / on / our",
+    "answer": "We often share our ideas on our class forum.",
+    "alts": [
+      "We often share our ideas on our class forum."
+    ],
+    "exp": "We often share our ideas on our class forum. (Chúng tôi thường chia sẻ ý tưởng trên diễn đàn lớp)."
+  },
+  {
+    "id": "cd5_u3_r2",
+    "topic": "CD5",
+    "unit": "Unit 3",
+    "type": "reorder",
+    "num": 2,
+    "prompt": "Nowadays, / social media platforms. / teens / a lot of / spend / time / on",
+    "answer": "Nowadays, teens spend a lot of time on social media platforms.",
+    "alts": [
+      "Nowadays, teens spend a lot of time on social media platforms."
+    ],
+    "exp": "Nowadays, teens spend a lot of time on social media platforms."
+  },
+  {
+    "id": "cd5_u3_r3",
+    "topic": "CD5",
+    "unit": "Unit 3",
+    "type": "reorder",
+    "num": 3,
+    "prompt": "loves / Mark / pictures / of / his adventures / uploading / social media. / on",
+    "answer": "Mark loves uploading pictures of his adventures on social media.",
+    "alts": [
+      "Mark loves uploading pictures of his adventures on social media."
+    ],
+    "exp": "Mark loves uploading pictures of his adventures on social media."
+  },
+  {
+    "id": "cd5_u3_r4",
+    "topic": "CD5",
+    "unit": "Unit 3",
+    "type": "reorder",
+    "num": 4,
+    "prompt": "My cousin / at school. / enjoys / in / taking part / the arts and crafts club",
+    "answer": "My cousin enjoys taking part in the arts and crafts club at school.",
+    "alts": [
+      "My cousin enjoys taking part in the arts and crafts club at school."
+    ],
+    "exp": "My cousin enjoys taking part in the arts and crafts club at school."
+  },
+  {
+    "id": "cd5_u3_r5",
+    "topic": "CD5",
+    "unit": "Unit 3",
+    "type": "reorder",
+    "num": 5,
+    "prompt": "the language club / I / to improve / join / foreign language skills. / my",
+    "answer": "I join the language club to improve my foreign language skills.",
+    "alts": [
+      "I join the language club to improve my foreign language skills."
+    ],
+    "exp": "I join the language club to improve my foreign language skills."
+  },
+  {
+    "id": "cd5_u3_w1",
+    "topic": "CD5",
+    "unit": "Unit 3",
+    "type": "rewrite",
+    "num": 1,
+    "prompt": "The boys are playing games. The girls are watching TV. (and)",
+    "answer": "The boys are playing games, and the girls are watching TV.",
+    "alts": [
+      "The boys are playing games, and the girls are watching TV.",
+      "The boys are playing games and the girls are watching TV."
+    ],
+    "options": [
+      "The boys are playing games, and the girls are watching TV.",
+      "The boys are playing games, so the girls are watching TV.",
+      "The boys are playing games; and the girls are watching TV.",
+      "And the boys are playing games, the girls are watching TV."
+    ],
+    "exp": "Ghép hai câu đơn thành câu ghép bằng liên từ kết hợp ', and'."
+  },
+  {
+    "id": "cd5_u3_w2",
+    "topic": "CD5",
+    "unit": "Unit 3",
+    "type": "rewrite",
+    "num": 2,
+    "prompt": "He lost the key. He couldn't get into the house. (so)",
+    "answer": "He lost the key, so he couldn't get into the house.",
+    "alts": [
+      "He lost the key, so he couldn't get into the house."
+    ],
+    "options": [
+      "He lost the key, so he couldn't get into the house.",
+      "He couldn't get into the house, so he lost the key.",
+      "So he lost the key, he couldn't get into the house.",
+      "He lost the key; so he couldn't get into the house."
+    ],
+    "exp": "Dùng ', so' trước mệnh đề chỉ kết quả."
+  },
+  {
+    "id": "cd5_u3_w3",
+    "topic": "CD5",
+    "unit": "Unit 3",
+    "type": "rewrite",
+    "num": 3,
+    "prompt": "During Tet, Vietnamese people buy all kinds of sweets. They make Chung cakes as well. (and)",
+    "answer": "During Tet, Vietnamese people buy all kinds of sweets, and they make Chung cakes as well.",
+    "alts": [
+      "During Tet, Vietnamese people buy all kinds of sweets, and they make Chung cakes as well.",
+      "During Tet, Vietnamese people buy all kinds of sweets and they make Chung cakes as well."
+    ],
+    "options": [
+      "During Tet, Vietnamese people buy all kinds of sweets, and they make Chung cakes as well.",
+      "During Tet, Vietnamese people buy all kinds of sweets; and they make Chung cakes as well.",
+      "During Tet, and Vietnamese people buy all kinds of sweets, they make Chung cakes as well.",
+      "During Tet, Vietnamese people buy all kinds of sweets, but they make Chung cakes as well."
+    ],
+    "exp": "Dùng ', and' để nối hai mệnh đề bổ sung ý cho nhau."
+  },
+  {
+    "id": "cd5_u3_w4",
+    "topic": "CD5",
+    "unit": "Unit 3",
+    "type": "rewrite",
+    "num": 4,
+    "prompt": "At the Mid-Autumn Festival, kids can sing, dance, and enjoy mooncakes. Every child likes it very much. (therefore)",
+    "answer": "At the Mid-Autumn Festival, kids can sing, dance, and enjoy mooncakes; therefore, every child likes it very much.",
+    "alts": [
+      "At the Mid-Autumn Festival, kids can sing, dance, and enjoy mooncakes; therefore, every child likes it very much.",
+      "At the Mid-Autumn Festival, kids can sing, dance, and enjoy mooncakes. Therefore, every child likes it very much."
+    ],
+    "options": [
+      "At the Mid-Autumn Festival, kids can sing, dance, and enjoy mooncakes; therefore, every child likes it very much.",
+      "At the Mid-Autumn Festival, kids can sing, dance, and enjoy mooncakes, therefore every child likes it very much.",
+      "Therefore at the Mid-Autumn Festival, kids can sing, dance, and enjoy mooncakes, every child likes it very much.",
+      "At the Mid-Autumn Festival, kids can sing, dance, and enjoy mooncakes; however, every child likes it very much."
+    ],
+    "exp": "Trạng từ liên kết 'therefore' đứng sau dấu chấm phẩy (;) và trước dấu phẩy (,)."
+  },
+  {
+    "id": "cd5_u3_w5",
+    "topic": "CD5",
+    "unit": "Unit 3",
+    "type": "rewrite",
+    "num": 5,
+    "prompt": "The water is highly polluted. We cannot swim in this part of the river. (because)",
+    "answer": "We cannot swim in this part of the river because the water is highly polluted.",
+    "alts": [
+      "We cannot swim in this part of the river because the water is highly polluted.",
+      "Because the water is highly polluted, we cannot swim in this part of the river."
+    ],
+    "options": [
+      "We cannot swim in this part of the river because the water is highly polluted.",
+      "The water is highly polluted because we cannot swim in this part of the river.",
+      "We cannot swim in this part of the river, because of the water is highly polluted.",
+      "Because we cannot swim in this part of the river, the water is highly polluted."
+    ],
+    "exp": "Dùng 'because' đứng trước mệnh đề chỉ nguyên nhân ('the water is highly polluted')."
+  },
+  {
+    "id": "cd5_u3_w6",
+    "topic": "CD5",
+    "unit": "Unit 3",
+    "type": "rewrite",
+    "num": 6,
+    "prompt": "She is a great cook. She doesn't like to bake. (but)",
+    "answer": "She is a great cook, but she doesn't like to bake.",
+    "alts": [
+      "She is a great cook, but she doesn't like to bake."
+    ],
+    "options": [
+      "She is a great cook, but she doesn't like to bake.",
+      "She is a great cook; but she doesn't like to bake.",
+      "But she is a great cook, she doesn't like to bake.",
+      "She is a great cook, so she doesn't like to bake."
+    ],
+    "exp": "Dùng ', but' để nối hai mệnh đề tương phản nhau."
+  },
+  {
+    "id": "cd5_u3_w7",
+    "topic": "CD5",
+    "unit": "Unit 3",
+    "type": "rewrite",
+    "num": 7,
+    "prompt": "Would you like a cake? Would you like an ice cream? (or)",
+    "answer": "Would you like a cake or an ice cream?",
+    "alts": [
+      "Would you like a cake or an ice cream?",
+      "Would you like a cake, or would you like an ice cream?"
+    ],
+    "options": [
+      "Would you like a cake or an ice cream?",
+      "Would you like a cake and an ice cream?",
+      "Would you like a cake, but an ice cream?",
+      "Or would you like a cake an ice cream?"
+    ],
+    "exp": "Dùng 'or' để nối hai sự lựa chọn: Would you like a cake or an ice cream?"
+  }
+];
+
+    // ============================================================================
+    // 2. WEB AUDIO API SYNTHESIZER (BACKGROUND MUSIC + SOUND EFFECTS)
+    // ============================================================================
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.bgmEnabled = true;
+        this.sfxEnabled = true;
+        this.bgmPlaying = false;
+        this.bgmStyle = 'upbeat';
+        this.stepIndex = 0;
+        this.bgmTimer = null;
+      }
+
+      initContext() {
+        if (!this.ctx) {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) {
+            this.ctx = new AudioCtx();
+          }
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      startBgm() {
+        if (!this.bgmEnabled) return;
+        this.initContext();
+        if (!this.ctx) return;
+        this.stopBgm();
+        this.bgmPlaying = true;
+        this.updateBgmUI();
+
+        const scales = {
+          upbeat: {
+            tempo: 210,
+            melody: [523.25, 659.25, 783.99, 659.25, 880.00, 783.99, 659.25, 587.33, 523.25, 587.33, 659.25, 783.99, 698.46, 659.25, 587.33, 523.25],
+            bass:   [261.63, 261.63, 196.00, 196.00, 220.00, 220.00, 174.61, 174.61, 261.63, 261.63, 196.00, 196.00, 174.61, 196.00, 261.63, 261.63]
+          },
+          lofi: {
+            tempo: 320,
+            melody: [440.00, 523.25, 659.25, 587.33, 493.88, 587.33, 523.25, 392.00, 349.23, 440.00, 523.25, 493.88, 392.00, 440.00, 329.63, 392.00],
+            bass:   [220.00, 220.00, 164.81, 164.81, 196.00, 196.00, 146.83, 146.83, 174.61, 174.61, 130.81, 130.81, 196.00, 196.00, 164.81, 164.81]
+          },
+          heroic: {
+            tempo: 185,
+            melody: [440.00, 440.00, 523.25, 587.33, 659.25, 659.25, 587.33, 523.25, 493.88, 523.25, 587.33, 493.88, 440.00, 392.00, 440.00, 523.25],
+            bass:   [220.00, 220.00, 220.00, 220.00, 174.61, 174.61, 196.00, 196.00, 164.81, 164.81, 196.00, 196.00, 220.00, 196.00, 220.00, 220.00]
+          }
+        };
+
+        const pattern = scales[this.bgmStyle] || scales.upbeat;
+
+        this.bgmTimer = setInterval(() => {
+          if (!this.bgmEnabled || !this.ctx || this.ctx.state !== 'running') return;
+          const now = this.ctx.currentTime;
+          const idx = this.stepIndex % pattern.melody.length;
+          const freq = pattern.melody[idx];
+          const bassFreq = pattern.bass[idx];
+
+          // Lead synth note
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = this.bgmStyle === 'lofi' ? 'sine' : 'triangle';
+          osc.frequency.setValueAtTime(freq, now);
+          gain.gain.setValueAtTime(0.001, now);
+          gain.gain.linearRampToValueAtTime(0.035, now + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0008, now + (pattern.tempo / 1000) * 0.9);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now);
+          osc.stop(now + (pattern.tempo / 1000));
+
+          // Warm sub-bass on even steps
+          if (idx % 2 === 0) {
+            const bOsc = this.ctx.createOscillator();
+            const bGain = this.ctx.createGain();
+            bOsc.type = 'sine';
+            bOsc.frequency.setValueAtTime(bassFreq, now);
+            bGain.gain.setValueAtTime(0.001, now);
+            bGain.gain.linearRampToValueAtTime(0.04, now + 0.03);
+            bGain.gain.exponentialRampToValueAtTime(0.0008, now + (pattern.tempo / 500));
+            bOsc.connect(bGain);
+            bGain.connect(this.ctx.destination);
+            bOsc.start(now);
+            bOsc.stop(now + (pattern.tempo / 500));
+          }
+
+          this.stepIndex++;
+        }, pattern.tempo);
+      }
+
+      stopBgm() {
+        if (this.bgmTimer) {
+          clearInterval(this.bgmTimer);
+          this.bgmTimer = null;
+        }
+        this.bgmPlaying = false;
+        this.updateBgmUI();
+      }
+
+      toggleBgm() {
+        this.bgmEnabled = !this.bgmEnabled;
+        if (this.bgmEnabled) {
+          this.startBgm();
+        } else {
+          this.stopBgm();
+        }
+        this.updateBgmUI();
+      }
+
+      setStyle(style) {
+        this.bgmStyle = style;
+        if (this.bgmEnabled) {
+          this.startBgm();
+        }
+      }
+
+      updateBgmUI() {
+        const icon = document.getElementById('bgmIcon');
+        const text = document.getElementById('bgmStatusText');
+        const eq = document.getElementById('bgmEqualizer');
+        if (!icon || !text || !eq) return;
+        if (this.bgmEnabled) {
+          icon.textContent = '🎵';
+          text.textContent = 'Nhạc: BẬT';
+          eq.classList.add('eq-active');
+        } else {
+          icon.textContent = '🔇';
+          text.textContent = 'Nhạc: TẮT';
+          eq.classList.remove('eq-active');
+        }
+      }
+
+      playSfx(type) {
+        if (!this.sfxEnabled) return;
+        this.initContext();
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+
+        if (type === 'correct') {
+          const notes = [523.25, 659.25, 783.99, 1046.50];
+          notes.forEach((f, i) => {
+            const osc = this.ctx.createOscillator();
+            const g = this.ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(f, now + i * 0.06);
+            g.gain.setValueAtTime(0.08, now + i * 0.06);
+            g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.06 + 0.22);
+            osc.connect(g);
+            g.connect(this.ctx.destination);
+            osc.start(now + i * 0.06);
+            osc.stop(now + i * 0.06 + 0.24);
+          });
+        } else if (type === 'wrong') {
+          const notes = [300, 220];
+          notes.forEach((f, i) => {
+            const osc = this.ctx.createOscillator();
+            const g = this.ctx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(f, now + i * 0.12);
+            g.gain.setValueAtTime(0.06, now + i * 0.12);
+            g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.12 + 0.22);
+            osc.connect(g);
+            g.connect(this.ctx.destination);
+            osc.start(now + i * 0.12);
+            osc.stop(now + i * 0.12 + 0.24);
+          });
+        } else if (type === 'click') {
+          const osc = this.ctx.createOscillator();
+          const g = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(660, now);
+          g.gain.setValueAtTime(0.04, now);
+          g.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+          osc.connect(g);
+          g.connect(this.ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.06);
+        } else if (type === 'victory') {
+          const notes = [523.25, 659.25, 783.99, 1046.50, 783.99, 1046.50];
+          notes.forEach((f, i) => {
+            const osc = this.ctx.createOscillator();
+            const g = this.ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(f, now + i * 0.09);
+            g.gain.setValueAtTime(0.09, now + i * 0.09);
+            g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.09 + 0.3);
+            osc.connect(g);
+            g.connect(this.ctx.destination);
+            osc.start(now + i * 0.09);
+            osc.stop(now + i * 0.09 + 0.32);
+          });
+        }
+      }
+    }
+
+    const sound = new SoundEngine();
+
+    // ============================================================================
+    // 3. CONFETTI FX ENGINE
+    // ============================================================================
+    const fxCanvas = document.getElementById('fxCanvas');
+    const fxCtx = fxCanvas.getContext('2d');
+    let particles = [];
+    let fxAnimId = null;
+
+    function resizeFxCanvas() {
+      fxCanvas.width = window.innerWidth;
+      fxCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeFxCanvas);
+    resizeFxCanvas();
+
+    function spawnConfetti(count = 45) {
+      const colors = ['#6366f1', '#10b981', '#f59e0b', '#ec4899', '#38bdf8', '#a855f7'];
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: window.innerWidth / 2 + (Math.random() - 0.5) * 260,
+          y: window.innerHeight * 0.45,
+          vx: (Math.random() - 0.5) * 12,
+          vy: -Math.random() * 11 - 4,
+          size: Math.random() * 7 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rot: Math.random() * Math.PI * 2,
+          vrot: (Math.random() - 0.5) * 0.2,
+          life: 1
+        });
+      }
+      if (!fxAnimId) animateConfetti();
+    }
+
+    function animateConfetti() {
+      fxCtx.clearRect(0, 0, fxCanvas.width, fxCanvas.height);
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.32;
+        p.rot += p.vrot;
+        p.life -= 0.014;
+        fxCtx.save();
+        fxCtx.translate(p.x, p.y);
+        fxCtx.rotate(p.rot);
+        fxCtx.globalAlpha = Math.max(0, p.life);
+        fxCtx.fillStyle = p.color;
+        fxCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        fxCtx.restore();
+      });
+      particles = particles.filter(p => p.life > 0 && p.y < fxCanvas.height + 30);
+      if (particles.length > 0) {
+        fxAnimId = requestAnimationFrame(animateConfetti);
+      } else {
+        fxCtx.clearRect(0, 0, fxCanvas.width, fxCanvas.height);
+        fxAnimId = null;
+      }
+    }
+
+    // ============================================================================
+    // 4. APPLICATION STATE & STORAGE
+    // ============================================================================
+    const state = {
+      studentName: 'Chiến Binh Tiếng Anh',
+      className: 'Lớp 8A1',
+      selectedTopic: 'ALL',
+      selectedUnit: 'ALL',
+      orderMode: 'sequential',
+      inputStyle: 'interactive',
+      gameMode: 'adventure',
+
+      // Persistent mastery map: { [questionId]: true/false }
+      mastered: {},
+      totalXP: 0,
+      bestStreak: 0,
+      leaderboard: [],
+
+      // Current session state
+      deck: [],
+      currentIndex: 0,
+      sessionScore: 0,
+      sessionCorrect: 0,
+      sessionStreak: 0,
+      sessionMaxStreak: 0,
+      sessionWrongIds: [],
+      sessionAnswered: {}, // { [questionId]: { isCorrect, userAns } }
+      lives: 3,
+      lifelines: 5,
+      timerSeconds: 30,
+      timerInterval: null,
+
+      // Reorder state for current question
+      reorderSelectedIndices: [],
+      reorderTokens: [],
+      bankShowAllAnswers: false
+    };
+
+    function loadPersistedState() {
+      try {
+        const saved = localStorage.getItem('eng8_arena_v1');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.studentName) state.studentName = parsed.studentName;
+          if (parsed.className) state.className = parsed.className;
+          if (parsed.mastered) state.mastered = parsed.mastered;
+          if (typeof parsed.totalXP === 'number') state.totalXP = parsed.totalXP;
+          if (typeof parsed.bestStreak === 'number') state.bestStreak = parsed.bestStreak;
+          if (Array.isArray(parsed.leaderboard)) state.leaderboard = parsed.leaderboard;
+        }
+      } catch (e) {
+        // Ignore storage errors in sandboxed contexts
+      }
+      if (state.leaderboard.length === 0) {
+        state.leaderboard = [
+          { name: 'Nguyễn Minh Châu', className: state.className, mode: 'Chinh phục 100%', correct: '164/164', xp: 18450 },
+          { name: 'Trần Hoàng Nam', className: state.className, mode: 'Speed Blitz', correct: '65/65', xp: 8200 },
+          { name: 'Lê Ngọc Hân', className: state.className, mode: 'Word Forms', correct: '60/60', xp: 6900 }
+        ];
+      }
+    }
+
+    function savePersistedState() {
+      try {
+        localStorage.setItem('eng8_arena_v1', JSON.stringify({
+          studentName: state.studentName,
+          className: state.className,
+          mastered: state.mastered,
+          totalXP: state.totalXP,
+          bestStreak: state.bestStreak,
+          leaderboard: state.leaderboard
+        }));
+      } catch (e) {
+        // Ignore storage errors
+      }
+    }
+
+    // ============================================================================
+    // 5. UI HELPERS & NAVIGATION
+    // ============================================================================
+    function showToast(msg) {
+      const box = document.getElementById('toastBox');
+      box.textContent = msg;
+      box.classList.remove('hidden');
+      clearTimeout(box._timer);
+      box._timer = setTimeout(() => box.classList.add('hidden'), 2600);
+    }
+
+    function switchView(viewName) {
+      const views = ['Lobby', 'Play', 'Summary', 'Bank', 'Leaderboard'];
+      views.forEach(v => {
+        const el = document.getElementById('view' + v);
+        if (el) {
+          if (v === viewName) el.classList.remove('hidden');
+          else el.classList.add('hidden');
+        }
+      });
+
+      const navMap = {
+        Lobby: 'navLobby',
+        Play: 'navPlay',
+        Summary: 'navPlay',
+        Bank: 'navBank',
+        Leaderboard: 'navLeaderboard'
+      };
+      ['navLobby', 'navPlay', 'navBank', 'navLeaderboard'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (id === navMap[viewName]) {
+          btn.className = 'px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition bg-indigo-600 text-white shadow';
+        } else {
+          btn.className = 'px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition text-slate-300 hover:text-white hover:bg-slate-800';
+        }
+      });
+
+      if (viewName !== 'Play') {
+        clearQuestionTimer();
+      }
+      if (viewName === 'Lobby') {
+        updateLobbyStats();
+      } else if (viewName === 'Bank') {
+        renderQuestionBank();
+      } else if (viewName === 'Leaderboard') {
+        renderLeaderboard();
+      }
+    }
+
+    function syncClassAndStudentUI() {
+      const cleanClass = state.className.trim() || 'Lớp 8A1';
+      const cleanName = state.studentName.trim() || 'Chiến Binh';
+      document.getElementById('headerClassBadge').textContent = cleanClass;
+      document.getElementById('heroClassName').textContent = cleanClass;
+      document.getElementById('arenaClassBadge').textContent = cleanClass;
+      document.getElementById('arenaPlayerName').textContent = cleanName;
+      document.getElementById('leaderboardClassTitle').textContent = cleanClass;
+      document.getElementById('summaryClassBadge').textContent = `${cleanClass.toUpperCase()} • BẢNG THÀNH TÍCH`;
+    }
+
+    function getFilteredQuestions(topic = state.selectedTopic, unit = state.selectedUnit) {
+      return QUESTIONS.filter(q => {
+        const matchTopic = (topic === 'ALL') || (q.topic === topic);
+        const matchUnit = (unit === 'ALL') || (q.unit === unit);
+        return matchTopic && matchUnit;
+      });
+    }
+
+    function updateLobbyStats() {
+      syncClassAndStudentUI();
+
+      const totalCount = QUESTIONS.length;
+      const masteredIds = Object.keys(state.mastered).filter(k => state.mastered[k]);
+      const masteredCount = masteredIds.length;
+      const pct = Math.round((masteredCount / totalCount) * 100);
+
+      document.getElementById('statTotalMastered').textContent = `${masteredCount}/${totalCount}`;
+      document.getElementById('statTotalPercent').textContent = `${pct}% hoàn thành`;
+      document.getElementById('barTotalMastery').style.width = `${pct}%`;
+
+      // Per topic
+      const cd2All = QUESTIONS.filter(q => q.topic === 'CD2');
+      const cd2Done = cd2All.filter(q => state.mastered[q.id]).length;
+      document.getElementById('statCD2').textContent = `${cd2Done} / ${cd2All.length} câu`;
+      document.getElementById('barCD2').style.width = `${Math.round((cd2Done / cd2All.length) * 100)}%`;
+
+      const cd3All = QUESTIONS.filter(q => q.topic === 'CD3');
+      const cd3Done = cd3All.filter(q => state.mastered[q.id]).length;
+      document.getElementById('statCD3').textContent = `${cd3Done} / ${cd3All.length} câu`;
+      document.getElementById('barCD3').style.width = `${Math.round((cd3Done / cd3All.length) * 100)}%`;
+
+      const cd5All = QUESTIONS.filter(q => q.topic === 'CD5');
+      const cd5Done = cd5All.filter(q => state.mastered[q.id]).length;
+      document.getElementById('statCD5').textContent = `${cd5Done} / ${cd5All.length} câu`;
+      document.getElementById('barCD5').style.width = `${Math.round((cd5Done / cd5All.length) * 100)}%`;
+
+      document.getElementById('statTotalScore').textContent = `${state.totalXP.toLocaleString('vi-VN')} XP`;
+      document.getElementById('statBestStreak').textContent = `${state.bestStreak}`;
+
+      const filtered = getFilteredQuestions();
+      document.getElementById('selectedCountBadge').textContent = `Đang chọn: ${filtered.length} câu`;
+    }
+
+    // ============================================================================
+    // 6. GAMEPLAY ENGINE
+    // ============================================================================
+    function normalizeSentence(str) {
+      if (!str) return '';
+      return str
+        .trim()
+        .replace(/[“”]/g, '"')
+        .replace(/[‘’]/g, "'")
+        .replace(/\s+/g, ' ')
+        .replace(/\s+([?.!,;])/g, '$1')
+        .toLowerCase();
+    }
+
+    function startNewGame(customDeck = null) {
+      if (sound.bgmEnabled && !sound.bgmPlaying) {
+        sound.startBgm();
+      }
+      sound.playSfx('click');
+
+      let pool = customDeck ? [...customDeck] : getFilteredQuestions();
+      if (pool.length === 0) {
+        pool = [...QUESTIONS];
+      }
+
+      if (!customDeck) {
+        if (state.orderMode === 'random') {
+          pool.sort(() => Math.random() - 0.5);
+        } else if (state.orderMode === 'unmastered') {
+          pool.sort((a, b) => {
+            const ma = state.mastered[a.id] ? 1 : 0;
+            const mb = state.mastered[b.id] ? 1 : 0;
+            return ma - mb;
+          });
+        }
+      }
+
+      state.deck = pool;
+      state.currentIndex = 0;
+      state.sessionScore = 0;
+      state.sessionCorrect = 0;
+      state.sessionStreak = 0;
+      state.sessionMaxStreak = 0;
+      state.sessionWrongIds = [];
+      state.sessionAnswered = {};
+      state.lives = 3;
+      state.lifelines = 5;
+
+      const topicNames = {
+        ALL: 'Tất cả Chuyên đề (2, 3, 5)',
+        CD2: 'Chuyên đề 2: Vocab & Grammar',
+        CD3: 'Chuyên đề 3: Word Forms',
+        CD5: 'Chuyên đề 5: Writing'
+      };
+      const unitNames = {
+        ALL: 'Cả 3 Unit',
+        'Unit 1': 'Unit 1: Leisure Activities',
+        'Unit 2': 'Unit 2: Life in the Countryside',
+        'Unit 3': 'Unit 3: Teenagers'
+      };
+
+      document.getElementById('arenaDeckSubtitle').textContent =
+        `${topicNames[state.selectedTopic]} • ${unitNames[state.selectedUnit]} (${state.deck.length} câu)`;
+
+      const livesBox = document.getElementById('arenaLivesBox');
+      if (state.gameMode === 'survival') {
+        livesBox.classList.remove('hidden');
+        livesBox.classList.add('flex');
+      } else {
+        livesBox.classList.add('hidden');
+        livesBox.classList.remove('flex');
+      }
+
+      const timerBox = document.getElementById('arenaTimerBox');
+      if (state.gameMode === 'speedrun') {
+        timerBox.classList.remove('hidden');
+        timerBox.classList.add('flex');
+      } else {
+        timerBox.classList.add('hidden');
+        timerBox.classList.remove('flex');
+      }
+
+      switchView('Play');
+      renderCurrentQuestion();
+    }
+
+    function clearQuestionTimer() {
+      if (state.timerInterval) {
+        clearInterval(state.timerInterval);
+        state.timerInterval = null;
+      }
+    }
+
+    function startQuestionTimer() {
+      clearQuestionTimer();
+      if (state.gameMode !== 'speedrun') return;
+      const q = state.deck[state.currentIndex];
+      if (!q || state.sessionAnswered[q.id]) return;
+
+      state.timerSeconds = 30;
+      const disp = document.getElementById('arenaTimerDisplay');
+      disp.textContent = `${state.timerSeconds}s`;
+
+      state.timerInterval = setInterval(() => {
+        state.timerSeconds--;
+        disp.textContent = `${state.timerSeconds}s`;
+        if (state.timerSeconds <= 0) {
+          clearQuestionTimer();
+          handleAnswerSubmission(false, '(Hết thời gian)');
+        }
+      }, 1000);
+    }
+
+    function renderJumpGrid() {
+      const container = document.getElementById('jumpGridButtons');
+      if (!container) return;
+      container.innerHTML = '';
+      state.deck.forEach((q, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = idx + 1;
+        const ans = state.sessionAnswered[q.id];
+        let cls = 'py-1.5 rounded-lg text-xs font-bold border transition ';
+        if (idx === state.currentIndex) {
+          cls += 'bg-indigo-600 text-white border-indigo-300 ring-2 ring-indigo-400';
+        } else if (ans && ans.isCorrect) {
+          cls += 'bg-emerald-600/30 text-emerald-300 border-emerald-500/40';
+        } else if (ans && !ans.isCorrect) {
+          cls += 'bg-rose-600/30 text-rose-300 border-rose-500/40';
+        } else if (state.mastered[q.id]) {
+          cls += 'bg-emerald-950/60 text-emerald-400 border-emerald-700/40';
+        } else {
+          cls += 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700';
+        }
+        btn.className = cls;
+        btn.addEventListener('click', () => {
+          state.currentIndex = idx;
+          renderCurrentQuestion();
+        });
+        container.appendChild(btn);
+      });
+    }
+
+    function renderCurrentQuestion() {
+      const q = state.deck[state.currentIndex];
+      if (!q) return;
+
+      // Update top arena bars
+      document.getElementById('arenaScoreDisplay').textContent = state.sessionScore.toLocaleString('vi-VN');
+      document.getElementById('arenaStreakDisplay').textContent = state.sessionStreak;
+      document.getElementById('arenaLivesDisplay').textContent = '❤️'.repeat(Math.max(0, state.lives)) || '💔';
+      document.getElementById('lifelineCount').textContent = state.lifelines;
+      document.getElementById('arenaQuestionCounter').textContent = `Câu ${state.currentIndex + 1} / ${state.deck.length}`;
+      document.getElementById('arenaAccuracyBadge').textContent = `Đúng: ${state.sessionCorrect}`;
+      const progressPct = Math.round(((state.currentIndex + 1) / state.deck.length) * 100);
+      document.getElementById('arenaProgressBar').style.width = `${progressPct}%`;
+
+      renderJumpGrid();
+
+      // Topic & Unit Badges
+      const topicMeta = {
+        CD2: { text: 'CHUYÊN ĐỀ 2: VOCABULARY & GRAMMAR', cls: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40' },
+        CD3: { text: 'CHUYÊN ĐỀ 3: WORD FORMS (TỪ LOẠI)', cls: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40' },
+        CD5: { text: 'CHUYÊN ĐỀ 5: WRITING (VIẾT CÂU)', cls: 'bg-amber-500/20 text-amber-300 border-amber-500/40' }
+      };
+      const tBadge = document.getElementById('qTopicBadge');
+      tBadge.textContent = topicMeta[q.topic].text;
+      tBadge.className = `px-3 py-1 rounded-full text-xs font-extrabold border ${topicMeta[q.topic].cls}`;
+
+      const unitMeta = {
+        'Unit 1': 'UNIT 1: LEISURE ACTIVITIES',
+        'Unit 2': 'UNIT 2: LIFE IN THE COUNTRYSIDE',
+        'Unit 3': 'UNIT 3: TEENAGERS'
+      };
+      document.getElementById('qUnitBadge').textContent = unitMeta[q.unit] || q.unit;
+      document.getElementById('qOriginalNumBadge').textContent = `Câu #${q.num} trong đề`;
+
+      // Instruction & Prompt
+      const instrEl = document.getElementById('qInstructionText');
+      const hintBox = document.getElementById('qWordFormHintBox');
+      if (q.type === 'mcq') {
+        instrEl.textContent = 'Choose the best answer A, B, C or D to complete each sentence:';
+        hintBox.classList.add('hidden');
+      } else if (q.type === 'wordform') {
+        instrEl.textContent = 'Give the correct form of the word given in brackets to complete the sentence:';
+        hintBox.classList.remove('hidden');
+        document.getElementById('qWordFormRoot').textContent = `(${q.hint})`;
+      } else if (q.type === 'reorder') {
+        instrEl.textContent = 'Part I. Reorder the words and phrases to make a complete sentence:';
+        hintBox.classList.add('hidden');
+      } else if (q.type === 'rewrite') {
+        instrEl.textContent = 'Part II. Finish/Write the second sentence so that its meaning stays the same:';
+        hintBox.classList.add('hidden');
+      }
+
+      document.getElementById('qPromptText').textContent = q.prompt;
+
+      // Hide all zones first
+      const zoneMcq = document.getElementById('zoneMcq');
+      const zoneTextInput = document.getElementById('zoneTextInput');
+      const zoneReorder = document.getElementById('zoneReorder');
+      zoneMcq.classList.add('hidden');
+      zoneTextInput.classList.add('hidden');
+      zoneReorder.classList.add('hidden');
+
+      const alreadyAnswered = state.sessionAnswered[q.id];
+
+      // Render appropriate interaction zone
+      if (q.type === 'mcq') {
+        zoneMcq.classList.remove('hidden');
+        renderMcqOptions(q, alreadyAnswered);
+      } else if (q.type === 'wordform' || q.type === 'rewrite') {
+        zoneTextInput.classList.remove('hidden');
+        const inputEl = document.getElementById('inputAnswerText');
+        const submitBtn = document.getElementById('btnSubmitTextAnswer');
+        inputEl.value = alreadyAnswered ? alreadyAnswered.userAns : '';
+        inputEl.disabled = !!alreadyAnswered;
+        submitBtn.disabled = !!alreadyAnswered;
+        inputEl.placeholder = q.type === 'wordform'
+          ? `Nhập dạng đúng của từ (${q.hint})...`
+          : 'Nhập câu viết lại hoàn chỉnh...';
+
+        // If interactive style is enabled, also allow showing 4 quick options
+        const quickBox = document.getElementById('quickChoiceSwitchBox');
+        if (state.inputStyle === 'interactive') {
+          quickBox.classList.remove('hidden');
+          zoneMcq.classList.remove('hidden');
+          renderStringMcqOptions(q, alreadyAnswered);
+        } else {
+          quickBox.classList.add('hidden');
+        }
+      } else if (q.type === 'reorder') {
+        zoneReorder.classList.remove('hidden');
+        initReorderZone(q, alreadyAnswered);
+      }
+
+      // Render feedback if already answered
+      const fbBox = document.getElementById('feedbackBox');
+      if (alreadyAnswered) {
+        showFeedbackUI(q, alreadyAnswered.isCorrect, alreadyAnswered.xpGained || 0);
+      } else {
+        fbBox.classList.add('hidden');
+      }
+
+      // Prev / Next buttons
+      document.getElementById('btnPrevQuestion').disabled = (state.currentIndex === 0);
+      document.getElementById('btnNextQuestion').textContent =
+        (state.currentIndex === state.deck.length - 1) ? '🏁 Hoàn thành & Xem kết quả' : 'Câu tiếp theo →';
+
+      startQuestionTimer();
+    }
+
+    function renderMcqOptions(q, alreadyAnswered) {
+      const zoneMcq = document.getElementById('zoneMcq');
+      zoneMcq.innerHTML = '';
+      const labels = ['A', 'B', 'C', 'D'];
+
+      q.options.forEach((optText, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.dataset.optIndex = idx;
+
+        let cls = 'p-4 rounded-2xl border-2 text-left font-bold text-sm sm:text-base transition flex items-center gap-3 ';
+        if (alreadyAnswered) {
+          if (idx === q.answer) {
+            cls += 'bg-emerald-600/30 border-emerald-400 text-white shadow-lg shadow-emerald-500/20';
+          } else if (alreadyAnswered.userAns === idx && !alreadyAnswered.isCorrect) {
+            cls += 'bg-rose-600/30 border-rose-400 text-rose-200';
+          } else {
+            cls += 'bg-slate-900/50 border-slate-800 text-slate-500 opacity-60';
+          }
+          btn.disabled = true;
+        } else {
+          cls += 'bg-slate-800/90 hover:bg-indigo-950/80 border-slate-700 hover:border-indigo-400 text-slate-100';
+        }
+
+        btn.className = cls;
+        btn.innerHTML = `
+          <span class="w-8 h-8 rounded-xl bg-slate-900 border border-slate-600 flex items-center justify-center text-xs font-black text-indigo-300 shrink-0">${labels[idx]}</span>
+          <span class="flex-1">${optText}</span>
+        `;
+
+        btn.addEventListener('click', () => {
+          if (state.sessionAnswered[q.id]) return;
+          const isCorrect = (idx === q.answer);
+          handleAnswerSubmission(isCorrect, idx);
+        });
+
+        zoneMcq.appendChild(btn);
+      });
+    }
+
+    function renderStringMcqOptions(q, alreadyAnswered) {
+      const zoneMcq = document.getElementById('zoneMcq');
+      zoneMcq.innerHTML = '';
+      const labels = ['A', 'B', 'C', 'D'];
+
+      // Create deterministic shuffled copy based on question ID so options aren't always A
+      const indexedOpts = (q.options || []).map((text, i) => ({ text, isCorrect: i === 0 }));
+      const seed = q.id.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+      indexedOpts.sort((a, b) => ((a.text.length + seed) % 5) - ((b.text.length + seed) % 5));
+
+      indexedOpts.forEach((item, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.dataset.isCorrect = item.isCorrect ? '1' : '0';
+
+        let cls = 'p-3.5 rounded-2xl border-2 text-left font-bold text-xs sm:text-sm transition flex items-center gap-3 ';
+        if (alreadyAnswered) {
+          if (item.isCorrect) {
+            cls += 'bg-emerald-600/30 border-emerald-400 text-white';
+          } else if (normalizeSentence(alreadyAnswered.userAns) === normalizeSentence(item.text) && !alreadyAnswered.isCorrect) {
+            cls += 'bg-rose-600/30 border-rose-400 text-rose-200';
+          } else {
+            cls += 'bg-slate-900/50 border-slate-800 text-slate-500 opacity-60';
+          }
+          btn.disabled = true;
+        } else {
+          cls += 'bg-slate-800/85 hover:bg-indigo-950/80 border-slate-700 hover:border-indigo-400 text-slate-100';
+        }
+
+        btn.className = cls;
+        btn.innerHTML = `
+          <span class="w-7 h-7 rounded-lg bg-slate-900 border border-slate-600 flex items-center justify-center text-xs font-black text-amber-300 shrink-0">${labels[idx]}</span>
+          <span class="flex-1">${item.text}</span>
+        `;
+
+        btn.addEventListener('click', () => {
+          if (state.sessionAnswered[q.id]) return;
+          document.getElementById('inputAnswerText').value = item.text;
+          handleAnswerSubmission(item.isCorrect, item.text);
+        });
+
+        zoneMcq.appendChild(btn);
+      });
+    }
+
+    function initReorderZone(q, alreadyAnswered) {
+      const rawChunks = q.prompt.split('/').map(s => s.trim()).filter(Boolean);
+      state.reorderTokens = rawChunks.map((text, idx) => ({ id: idx, text }));
+
+      if (alreadyAnswered) {
+        state.reorderSelectedIndices = state.reorderTokens.map(t => t.id);
+      } else {
+        state.reorderSelectedIndices = [];
+      }
+      renderReorderTokens(q, alreadyAnswered);
+    }
+
+    function renderReorderTokens(q, alreadyAnswered) {
+      const targetBox = document.getElementById('reorderTargetBox');
+      const sourceBox = document.getElementById('reorderSourceBox');
+      targetBox.innerHTML = '';
+      sourceBox.innerHTML = '';
+
+      if (alreadyAnswered) {
+        const finalSentence = document.createElement('div');
+        finalSentence.className = 'text-base sm:text-lg font-bold text-emerald-300 px-2 py-1';
+        finalSentence.textContent = alreadyAnswered.userAns || q.answer;
+        targetBox.appendChild(finalSentence);
+        document.getElementById('btnSubmitReorder').disabled = true;
+        return;
+      }
+
+      document.getElementById('btnSubmitReorder').disabled = false;
+
+      if (state.reorderSelectedIndices.length === 0) {
+        const placeholder = document.createElement('span');
+        placeholder.className = 'text-xs sm:text-sm text-slate-500 italic';
+        placeholder.textContent = 'Nhấn vào các cụm từ bên dưới theo đúng thứ tự để tạo thành câu hoàn chỉnh...';
+        targetBox.appendChild(placeholder);
+      } else {
+        state.reorderSelectedIndices.forEach((tokenId, posIdx) => {
+          const tokenObj = state.reorderTokens.find(t => t.id === tokenId);
+          if (!tokenObj) return;
+          const chip = document.createElement('button');
+          chip.type = 'button';
+          chip.className = 'word-chip px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-rose-600 text-white font-bold text-sm shadow border border-indigo-400';
+          chip.textContent = tokenObj.text;
+          chip.addEventListener('click', () => {
+            sound.playSfx('click');
+            state.reorderSelectedIndices.splice(posIdx, 1);
+            renderReorderTokens(q, false);
+          });
+          targetBox.appendChild(chip);
+        });
+      }
+
+      state.reorderTokens.forEach(tokenObj => {
+        const isUsed = state.reorderSelectedIndices.includes(tokenObj.id);
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.disabled = isUsed;
+        chip.className = isUsed
+          ? 'px-3 py-1.5 rounded-xl bg-slate-900 text-slate-600 font-bold text-sm border border-slate-800 opacity-40 cursor-not-allowed'
+          : 'word-chip px-3.5 py-1.5 rounded-xl bg-slate-700 hover:bg-indigo-600 text-white font-bold text-sm border border-slate-500 shadow';
+        chip.textContent = tokenObj.text;
+        chip.addEventListener('click', () => {
+          if (isUsed) return;
+          sound.playSfx('click');
+          state.reorderSelectedIndices.push(tokenObj.id);
+          renderReorderTokens(q, false);
+        });
+        sourceBox.appendChild(chip);
+      });
+    }
+
+    function checkTextOrReorderAnswer(q, rawUserText) {
+      const normUser = normalizeSentence(rawUserText);
+      const validAnswers = [q.answer, ...(q.alts || [])];
+      return validAnswers.some(ans => normalizeSentence(ans) === normUser);
+    }
+
+    function handleAnswerSubmission(isCorrect, userAns) {
+      const q = state.deck[state.currentIndex];
+      if (!q || state.sessionAnswered[q.id]) return;
+
+      clearQuestionTimer();
+
+      let xpGained = 0;
+      if (isCorrect) {
+        sound.playSfx('correct');
+        state.sessionStreak++;
+        if (state.sessionStreak > state.sessionMaxStreak) {
+          state.sessionMaxStreak = state.sessionStreak;
+        }
+        if (state.sessionStreak > state.bestStreak) {
+          state.bestStreak = state.sessionStreak;
+        }
+
+        const baseXP = 100;
+        const streakBonus = Math.min(150, state.sessionStreak * 15);
+        const speedBonus = (state.gameMode === 'speedrun') ? state.timerSeconds * 4 : 0;
+        xpGained = baseXP + streakBonus + speedBonus;
+
+        state.sessionScore += xpGained;
+        state.totalXP += xpGained;
+        state.sessionCorrect++;
+        state.mastered[q.id] = true;
+
+        if (state.sessionStreak % 3 === 0 || xpGained >= 150) {
+          spawnConfetti(35);
+        }
+      } else {
+        sound.playSfx('wrong');
+        state.sessionStreak = 0;
+        if (!state.sessionWrongIds.includes(q.id)) {
+          state.sessionWrongIds.push(q.id);
+        }
+        if (state.gameMode === 'survival') {
+          state.lives--;
+        }
+      }
+
+      state.sessionAnswered[q.id] = { isCorrect, userAns, xpGained };
+      savePersistedState();
+      renderCurrentQuestion();
+
+      if (state.gameMode === 'survival' && state.lives <= 0) {
+        setTimeout(() => finishSession('Hết mạng (💔)! Hãy xem thành tích của bạn:'), 1100);
+      }
+    }
+
+    function showFeedbackUI(q, isCorrect, xpGained) {
+      const fbBox = document.getElementById('feedbackBox');
+      const fbTitle = document.getElementById('feedbackTitle');
+      const fbCorrect = document.getElementById('feedbackCorrectAnswer');
+      const fbExp = document.getElementById('feedbackExplanation');
+
+      fbBox.classList.remove('hidden');
+
+      let correctDisplay = '';
+      if (q.type === 'mcq') {
+        const labels = ['A', 'B', 'C', 'D'];
+        correctDisplay = `Đáp án đúng: ${labels[q.answer]}. ${q.options[q.answer]}`;
+      } else {
+        correctDisplay = `Đáp án chuẩn: ${q.answer}`;
+      }
+
+      if (isCorrect) {
+        fbBox.className = 'rounded-2xl p-4 sm:p-5 border bg-emerald-950/75 border-emerald-500/60 space-y-1.5 pop-in';
+        fbTitle.className = 'text-base sm:text-lg font-black text-emerald-300';
+        fbTitle.textContent = `🎉 Chính xác tuyệt đối! +${xpGained} XP (Combo 🔥${state.sessionStreak})`;
+      } else {
+        fbBox.className = 'rounded-2xl p-4 sm:p-5 border bg-rose-950/75 border-rose-500/60 space-y-1.5 pop-in';
+        fbTitle.className = 'text-base sm:text-lg font-black text-rose-300';
+        fbTitle.textContent = '💡 Chưa chính xác — Cùng ghi nhớ đáp án đúng nhé!';
+      }
+
+      fbCorrect.textContent = correctDisplay;
+      fbExp.textContent = `📌 Giải thích: ${q.exp}`;
+    }
+
+    function useLifeline() {
+      const q = state.deck[state.currentIndex];
+      if (!q || state.sessionAnswered[q.id]) return;
+      if (state.lifelines <= 0) {
+        showToast('⚠️ Bạn đã dùng hết 5 lượt Trợ giúp trong màn này!');
+        return;
+      }
+
+      state.lifelines--;
+      document.getElementById('lifelineCount').textContent = state.lifelines;
+      sound.playSfx('click');
+
+      if (q.type === 'mcq') {
+        // Eliminate 2 wrong options
+        const buttons = Array.from(document.querySelectorAll('#zoneMcq button'));
+        const wrongBtns = buttons.filter(b => Number(b.dataset.optIndex) !== q.answer && !b.disabled);
+        wrongBtns.slice(0, 2).forEach(b => {
+          b.disabled = true;
+          b.classList.add('opacity-30', 'line-through');
+        });
+        showToast('💡 Trợ giúp 50/50: Đã loại bỏ 2 phương án sai!');
+      } else if (q.type === 'wordform' || q.type === 'rewrite') {
+        const ans = q.answer;
+        const preview = ans.length > 4 ? ans.slice(0, Math.ceil(ans.length / 2)) + '...' : ans[0] + '...';
+        showToast(`💡 Gợi ý đáp án bắt đầu bằng: "${preview}"`);
+      } else if (q.type === 'reorder') {
+        // Auto-place next correct word chunk
+        const targetWords = q.answer.split(' ');
+        showToast(`💡 Gợi ý: "${targetWords.slice(0, 4).join(' ')}..."`);
+      }
+    }
+
+    function finishSession(customSubtitle = null) {
+      clearQuestionTimer();
+      sound.playSfx('victory');
+      spawnConfetti(80);
+
+      const totalQ = state.deck.length;
+      const acc = totalQ > 0 ? Math.round((state.sessionCorrect / totalQ) * 100) : 0;
+
+      document.getElementById('sumScore').textContent = `${state.sessionScore.toLocaleString('vi-VN')} XP`;
+      document.getElementById('sumCorrect').textContent = `${state.sessionCorrect}/${totalQ}`;
+      document.getElementById('sumMaxStreak').textContent = `${state.sessionMaxStreak}`;
+      document.getElementById('sumAccuracy').textContent = `${acc}%`;
+
+      document.getElementById('summarySubtitle').textContent =
+        customSubtitle || `Chiến binh ${state.studentName} (${state.className}) đã hoàn thành lượt ôn tập!`;
+
+      const btnReviewWrong = document.getElementById('btnReviewWrong');
+      if (state.sessionWrongIds.length > 0) {
+        btnReviewWrong.classList.remove('hidden');
+        btnReviewWrong.textContent = `🎯 Ôn lại ${state.sessionWrongIds.length} câu làm sai`;
+      } else {
+        btnReviewWrong.classList.add('hidden');
+      }
+
+      // Add entry to class leaderboard
+      const modeLabels = {
+        adventure: 'Chinh phục đề cương',
+        speedrun: 'Speed Blitz 30s',
+        survival: 'Sinh tồn 3❤️'
+      };
+      state.leaderboard.push({
+        name: state.studentName || 'Chiến Binh',
+        className: state.className || 'Lớp 8A1',
+        mode: `${modeLabels[state.gameMode]} (${state.selectedTopic})`,
+        correct: `${state.sessionCorrect}/${totalQ}`,
+        xp: state.sessionScore
+      });
+      state.leaderboard.sort((a, b) => b.xp - a.xp);
+      state.leaderboard = state.leaderboard.slice(0, 20);
+      savePersistedState();
+
+      switchView('Summary');
+    }
+
+    // ============================================================================
+    // 7. QUESTION BANK & LEADERBOARD RENDERERS
+    // ============================================================================
+    function renderQuestionBank() {
+      const searchVal = (document.getElementById('bankSearchInput').value || '').trim().toLowerCase();
+      const topicVal = document.getElementById('bankFilterTopic').value;
+      const unitVal = document.getElementById('bankFilterUnit').value;
+      const statusVal = document.getElementById('bankFilterStatus').value;
+
+      const filtered = QUESTIONS.filter(q => {
+        if (topicVal !== 'ALL' && q.topic !== topicVal) return false;
+        if (unitVal !== 'ALL' && q.unit !== unitVal) return false;
+        const isMastered = !!state.mastered[q.id];
+        if (statusVal === 'MASTERED' && !isMastered) return false;
+        if (statusVal === 'UNMASTERED' && isMastered) return false;
+        if (searchVal) {
+          const hay = `${q.prompt} ${q.exp} ${q.hint || ''} ${q.unit} ${q.topic}`.toLowerCase();
+          if (!hay.includes(searchVal)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById('bankCountText').textContent =
+        `Đang hiển thị: ${filtered.length} / ${QUESTIONS.length} câu hỏi`;
+
+      const container = document.getElementById('bankListContainer');
+      container.innerHTML = '';
+
+      const labels = ['A', 'B', 'C', 'D'];
+
+      filtered.forEach((q, idx) => {
+        const card = document.createElement('div');
+        const isMastered = !!state.mastered[q.id];
+        card.className = 'p-4 rounded-2xl bg-slate-900/85 border border-slate-700/80 flex flex-col gap-2';
+
+        const ansString = (q.type === 'mcq')
+          ? `${labels[q.answer]}. ${q.options[q.answer]}`
+          : q.answer;
+
+        const optionsHtml = (q.type === 'mcq')
+          ? `<div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-xs text-slate-300 pt-1">
+              ${q.options.map((o, i) => `<div class="px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700"><strong>${labels[i]}.</strong> ${o}</div>`).join('')}
+             </div>`
+          : '';
+
+        const hintBadge = q.hint ? `<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-xs font-bold">Từ gốc: (${q.hint})</span>` : '';
+
+        card.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="px-2.5 py-0.5 rounded-lg bg-indigo-500/20 text-indigo-300 text-xs font-extrabold">${q.topic} • ${q.unit} • Câu ${q.num}</span>
+              ${hintBadge}
+              <span class="px-2 py-0.5 rounded-lg text-xs font-bold ${isMastered ? 'bg-emerald-500/20 text-emerald-300' : 'bg-slate-800 text-slate-400'}">
+                ${isMastered ? '✓ Đã thuộc' : '○ Chưa làm'}
+              </span>
+            </div>
+            <button type="button" data-practice-id="${q.id}" class="bank-practice-btn px-3 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition">
+              🎮 Luyện câu này
+            </button>
+          </div>
+          <p class="text-sm sm:text-base font-bold text-white">${q.prompt}</p>
+          ${optionsHtml}
+          <div class="bank-ans-block ${state.bankShowAllAnswers ? '' : 'hidden'} mt-1 p-3 rounded-xl bg-slate-800/90 border border-emerald-500/30 text-xs space-y-1">
+            <div class="font-extrabold text-emerald-300">✓ Đáp án: ${ansString}</div>
+            <div class="text-slate-300">💡 Giải thích: ${q.exp}</div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+
+      container.querySelectorAll('.bank-practice-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const qId = btn.dataset.practiceId;
+          const indexInAll = QUESTIONS.findIndex(item => item.id === qId);
+          if (indexInAll !== -1) {
+            state.selectedTopic = 'ALL';
+            state.selectedUnit = 'ALL';
+            startNewGame([...QUESTIONS]);
+            state.currentIndex = indexInAll;
+            renderCurrentQuestion();
+          }
+        });
+      });
+    }
+
+    function renderLeaderboard() {
+      const tbody = document.getElementById('leaderboardTableBody');
+      tbody.innerHTML = '';
+      state.leaderboard.forEach((row, i) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-800/50 transition';
+        const medal = i === 0 ? '🥇 1' : i === 1 ? '🥈 2' : i === 2 ? '🥉 3' : `#${i + 1}`;
+        tr.innerHTML = `
+          <td class="py-3 px-3 font-black text-amber-300">${medal}</td>
+          <td class="py-3 px-3 font-bold text-white">${row.name}</td>
+          <td class="py-3 px-3"><span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold border border-amber-400/30">${row.className}</span></td>
+          <td class="py-3 px-3 text-xs text-slate-300">${row.mode}</td>
+          <td class="py-3 px-3 font-bold text-emerald-400">${row.correct}</td>
+          <td class="py-3 px-3 font-black text-indigo-300">${Number(row.xp).toLocaleString('vi-VN')} XP</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // ============================================================================
+    // 8. EVENT LISTENERS INITIALIZATION
+    // ============================================================================
+    window.addEventListener('DOMContentLoaded', () => {
+      loadPersistedState();
+
+      // Populate initial inputs
+      const inputStudent = document.getElementById('inputStudentName');
+      const inputClass = document.getElementById('inputClassName');
+      inputStudent.value = state.studentName;
+      inputClass.value = state.className;
+
+      const handleProfileChange = () => {
+        state.studentName = inputStudent.value.trim() || 'Chiến Binh Tiếng Anh';
+        state.className = inputClass.value.trim() || 'Lớp 8A1';
+        savePersistedState();
+        syncClassAndStudentUI();
+        const fb = document.getElementById('saveProfileFeedback');
+        fb.classList.remove('opacity-0');
+        clearTimeout(fb._t);
+        fb._t = setTimeout(() => fb.classList.add('opacity-0'), 1500);
+      };
+
+      inputStudent.addEventListener('input', handleProfileChange);
+      inputClass.addEventListener('input', handleProfileChange);
+
+      document.querySelectorAll('.preset-class-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          sound.playSfx('click');
+          inputClass.value = btn.dataset.classPreset;
+          handleProfileChange();
+        });
+      });
+
+      // Top Navigation
+      document.getElementById('btnLogoHome').addEventListener('click', () => switchView('Lobby'));
+      document.getElementById('navLobby').addEventListener('click', () => switchView('Lobby'));
+      document.getElementById('navPlay').addEventListener('click', () => {
+        if (state.deck.length === 0) startNewGame();
+        else switchView('Play');
+      });
+      document.getElementById('navBank').addEventListener('click', () => switchView('Bank'));
+      document.getElementById('navLeaderboard').addEventListener('click', () => switchView('Leaderboard'));
+
+      // Music & Audio Controls
+      document.getElementById('btnToggleBgm').addEventListener('click', () => {
+        sound.toggleBgm();
+      });
+      document.getElementById('selectBgmStyle').addEventListener('change', (e) => {
+        sound.setStyle(e.target.value);
+      });
+      document.getElementById('btnToggleSfx').addEventListener('click', () => {
+        sound.sfxEnabled = !sound.sfxEnabled;
+        document.getElementById('sfxIcon').textContent = sound.sfxEnabled ? '🔊' : '🔈';
+        showToast(sound.sfxEnabled ? '🔊 Đã bật hiệu ứng âm thanh (SFX)' : '🔈 Đã tắt hiệu ứng âm thanh (SFX)');
+      });
+
+      // Topic Filter Buttons
+      document.querySelectorAll('.topic-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          sound.playSfx('click');
+          state.selectedTopic = btn.dataset.topic;
+          document.querySelectorAll('.topic-filter-btn').forEach(b => {
+            if (b.dataset.topic === state.selectedTopic) {
+              b.className = 'topic-filter-btn p-3 rounded-2xl border text-left transition flex items-center justify-between bg-indigo-600/30 border-indigo-400 text-white';
+            } else {
+              b.className = 'topic-filter-btn p-3 rounded-2xl border text-left transition flex items-center justify-between bg-slate-800/70 border-slate-700 text-slate-200 hover:border-slate-500';
+            }
+          });
+          updateLobbyStats();
+        });
+      });
+
+      // Unit Filter Buttons
+      document.querySelectorAll('.unit-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          sound.playSfx('click');
+          state.selectedUnit = btn.dataset.unit;
+          document.querySelectorAll('.unit-filter-btn').forEach(b => {
+            if (b.dataset.unit === state.selectedUnit) {
+              b.className = 'unit-filter-btn py-2.5 px-3 rounded-xl border text-xs sm:text-sm font-bold transition bg-amber-500/25 border-amber-400 text-amber-200';
+            } else {
+              b.className = 'unit-filter-btn py-2.5 px-3 rounded-xl border text-xs sm:text-sm font-bold transition bg-slate-800/80 border-slate-700 text-slate-300 hover:border-slate-500';
+            }
+          });
+          updateLobbyStats();
+        });
+      });
+
+      // Select Order & Input Style
+      document.getElementById('selectOrderMode').addEventListener('change', (e) => {
+        state.orderMode = e.target.value;
+      });
+      document.getElementById('selectInputStyle').addEventListener('change', (e) => {
+        state.inputStyle = e.target.value;
+      });
+
+      // Game Mode Selection
+      document.querySelectorAll('.gamemode-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          sound.playSfx('click');
+          state.gameMode = btn.dataset.gamemode;
+          document.querySelectorAll('.gamemode-btn').forEach(b => {
+            if (b.dataset.gamemode === state.gameMode) {
+              b.className = 'gamemode-btn w-full p-3.5 rounded-2xl border text-left transition flex items-start gap-3 bg-gradient-to-r from-indigo-600/30 to-purple-600/25 border-indigo-400 text-white';
+            } else {
+              b.className = 'gamemode-btn w-full p-3.5 rounded-2xl border text-left transition flex items-start gap-3 bg-slate-800/75 border-slate-700 text-slate-200 hover:border-slate-500';
+            }
+          });
+        });
+      });
+
+      // Start Game Buttons
+      document.getElementById('btnStartGame').addEventListener('click', () => startNewGame());
+      document.querySelectorAll('.quick-unit-play').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.selectedTopic = 'ALL';
+          state.selectedUnit = btn.dataset.quickUnit;
+          startNewGame();
+        });
+      });
+
+      // Reset Progress
+      document.getElementById('btnResetProgress').addEventListener('click', () => {
+        state.mastered = {};
+        state.totalXP = 0;
+        state.bestStreak = 0;
+        savePersistedState();
+        updateLobbyStats();
+        showToast('↺ Đã đặt lại tiến độ chinh phục đề cương về 0%!');
+      });
+
+      // Arena Controls
+      document.getElementById('btnBackToLobby').addEventListener('click', () => switchView('Lobby'));
+      document.getElementById('btnToggleJumpGrid').addEventListener('click', () => {
+        document.getElementById('jumpGridContainer').classList.toggle('hidden');
+      });
+      document.getElementById('btnLifelineHint').addEventListener('click', useLifeline);
+
+      // Text Answer Submission
+      document.getElementById('btnSubmitTextAnswer').addEventListener('click', () => {
+        const q = state.deck[state.currentIndex];
+        if (!q || state.sessionAnswered[q.id]) return;
+        const val = document.getElementById('inputAnswerText').value.trim();
+        if (!val) {
+          showToast('✍️ Vui lòng nhập câu trả lời hoặc chọn phương án bên dưới!');
+          return;
+        }
+        const isCorrect = checkTextOrReorderAnswer(q, val);
+        handleAnswerSubmission(isCorrect, val);
+      });
+
+      document.getElementById('inputAnswerText').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          document.getElementById('btnSubmitTextAnswer').click();
+        }
+      });
+
+      document.getElementById('btnShowQuickOptions').addEventListener('click', () => {
+        const q = state.deck[state.currentIndex];
+        if (!q) return;
+        const zoneMcq = document.getElementById('zoneMcq');
+        zoneMcq.classList.remove('hidden');
+        renderStringMcqOptions(q, state.sessionAnswered[q.id]);
+      });
+
+      // Reorder Controls
+      document.getElementById('btnClearReorder').addEventListener('click', () => {
+        const q = state.deck[state.currentIndex];
+        if (!q || state.sessionAnswered[q.id]) return;
+        state.reorderSelectedIndices = [];
+        renderReorderTokens(q, false);
+      });
+
+      document.getElementById('btnSubmitReorder').addEventListener('click', () => {
+        const q = state.deck[state.currentIndex];
+        if (!q || state.sessionAnswered[q.id]) return;
+        if (state.reorderSelectedIndices.length === 0) {
+          showToast('🧩 Hãy nhấn vào các thẻ từ bên dưới để ghép thành câu trước nhé!');
+          return;
+        }
+        const userBuilt = state.reorderSelectedIndices
+          .map(id => state.reorderTokens.find(t => t.id === id)?.text || '')
+          .join(' ');
+        const isCorrect = checkTextOrReorderAnswer(q, userBuilt);
+        handleAnswerSubmission(isCorrect, userBuilt);
+      });
+
+      // Question Prev / Skip / Next
+      document.getElementById('btnPrevQuestion').addEventListener('click', () => {
+        if (state.currentIndex > 0) {
+          state.currentIndex--;
+          renderCurrentQuestion();
+        }
+      });
+
+      document.getElementById('btnSkipQuestion').addEventListener('click', () => {
+        if (state.currentIndex < state.deck.length - 1) {
+          state.currentIndex++;
+          renderCurrentQuestion();
+        } else {
+          finishSession();
+        }
+      });
+
+      document.getElementById('btnNextQuestion').addEventListener('click', () => {
+        if (state.currentIndex < state.deck.length - 1) {
+          state.currentIndex++;
+          renderCurrentQuestion();
+        } else {
+          finishSession();
+        }
+      });
+
+      // Summary View Controls
+      document.getElementById('btnReplaySame').addEventListener('click', () => startNewGame());
+      document.getElementById('btnReviewWrong').addEventListener('click', () => {
+        const wrongPool = QUESTIONS.filter(q => state.sessionWrongIds.includes(q.id));
+        if (wrongPool.length > 0) startNewGame(wrongPool);
+      });
+      document.getElementById('btnSummaryToLobby').addEventListener('click', () => switchView('Lobby'));
+
+      // Question Bank Filters
+      document.getElementById('bankSearchInput').addEventListener('input', renderQuestionBank);
+      document.getElementById('bankFilterTopic').addEventListener('change', renderQuestionBank);
+      document.getElementById('bankFilterUnit').addEventListener('change', renderQuestionBank);
+      document.getElementById('bankFilterStatus').addEventListener('change', renderQuestionBank);
+      document.getElementById('btnToggleAllAnswersBank').addEventListener('click', () => {
+        state.bankShowAllAnswers = !state.bankShowAllAnswers;
+        renderQuestionBank();
+      });
+
+      // Leaderboard Clear
+      document.getElementById('btnClearLeaderboard').addEventListener('click', () => {
+        state.leaderboard = [];
+        savePersistedState();
+        renderLeaderboard();
+        showToast('🗑️ Đã xoá lịch sử Bảng vàng!');
+      });
+
+      // Initial render
+      updateLobbyStats();
+    });
+  </script>
+</body>
+</html>
